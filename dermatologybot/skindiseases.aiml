@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- question1: do you have any symptoms? -->
+    <category>
+        <pattern>Skin</pattern>
+        <template>Hi, do you have any symptoms?</template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Sorry, I don't understand what you mean.</template>
+    </category>
+    
+ -----------------------------------------------------------------
+<!--question2: Hi, what are your symptoms? -->
+    <category>
+        <pattern>yes</pattern>
+        <template>Hi, what are your symptoms?</template>
+        <that>Hi, do you have any symptoms</that>
+    </category>
+
+    <category>
+        <pattern>no</pattern>
+        <template>Do you know what disease you are?</template>
+        <that>Hi, do you have any symptoms</that>
+    </category>
+ -----------------------------------------------------------------
+
+<!--question3: Do you know what disease you are? -->
+    <category>
+        <pattern>yes</pattern>
+        <that>Do you know what disease you are</that>
+        <template>
+            What disease you are?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>no</pattern>
+        <that>Do you know what disease you are</that>
+        <template>
+           Do you know what caused it?
+        </template>
+    </category>
+ -----------------------------------------------------------------
+ <!--question4: Do you know what caused it? -->
+    <category>
+        <pattern>yes</pattern>
+        <that>Do you know what caused it</that>
+        <template>
+            Is it caused by what?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>no</pattern>
+        <that>Do you know what caused it</that>
+        <template>
+            Where do you have symptoms on your body?
+        </template>
+    </category>
+ -----------------------------------------------------------------
+ <!--question5: Where do you have symptoms on your body? -->
+
+    <category>
+        <pattern>*</pattern>
+        <that>Where do you have symptoms on your body</that>
+        <template>
+            Maybe you have: <br/>
+            <think>
+                <set name = "diseases"><star/></set>
+            </think>
+            <set name = "disease"><map name = "skinlocation"><get name = "diseases"/></map></set>
+            <condition name = "disease" value = "Cellulitis"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/01/cellulitismi01apacyu_1484279.jpg</image></condition>
+            <condition name = "disease" value = "Impetigo"><image>https://healthjade.net/wp-content/uploads/2020/11/impetigo-contagiosa.jpg</image></condition>
+            <condition name = "disease" value = "Carbuncle"><image>https://media.mercola.com/ImageServer/Public/2018/February/FB/folliculitis-types-fb.jpg</image></condition>
+            <condition name = "disease" value = "Vitiligo"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/08/vitiligo_G_151046848.jpg</image></condition>
+            <condition name = "disease" value = "Melanoma"><image>https://cdn.sanity.io/images/0vv8moc6/dermatologytimes/08db0a236f4bbf86d92d4acef3f8855d14ffad61-5022x3348.jpg</image></condition>
+            <condition name = "disease" value = "Actinic Keratosis"><image>https://images.ctfassets.net/yixw23k2v6vo/4AR26s6LpmqgoikwOc664S/5578973f349808a18366ede7dd9c62d7/Actinic-Keratosis-iStock-154918058.jpg</image></condition>
+            <condition name = "disease" value = "Hives"><image>https://www.thehealthjournals.com/wp-content/uploads/2019/10/iStock-169952304-1024x765.jpg</image></condition>
+            <condition name = "disease" value = "Keratosis pilaris"><image>https://www.stayathomemum.com.au/wp-content/uploads/2018/08/20170828044707ed2d1636d55605d45684d1d16abf2aca.jpg</image></condition>
+            <condition name = "disease" value = "Psoriasis"><image>https://ajp.com.au/wp-content/uploads/2018/04/83369597_l.jpg</image></condition>
+            <condition name = "disease" value = "Acne"><image>https://cdn.futura-sciences.com/buildsv6/images/wide1920/6/1/c/61c8d8a0bf_85372_9fs-9-shutterstock-53402089.jpg</image></condition>
+            <condition name = "disease" value = "Rosacea"><image>https://skinclinics.ca/site/wp-content/uploads/2019/02/skin-condition-rosacea.jpg</image></condition>
+            <condition name = "disease" value = "Melasma"><image>https://cdn.coordiutil.com/imagen-melasma_35-1058685-800-600-1-75.jpg</image></condition>
+            
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+
+
+ <!--question6:Where else do you have symptoms on your body? -->
+    <category>
+        <pattern>nose</pattern>
+        <that>Where do you have symptoms on your body</that>
+        <template>
+            Where else do you have symptoms on your body?
+        </template>
+    </category>
+ <!--question7:Do you have diabetes? -->
+    <category>
+        <pattern>face</pattern>
+        <that>Where do you have symptoms on your body</that>
+        <template>
+            Do you have diabetes?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>no</pattern>
+        <that>Do you have diabetes</that>
+        <template>
+            Maybe you have: <br/>
+            <think><set name = "disease">Acne</set></think>
+            <get name = "disease"/>
+            <image>https://cdn.futura-sciences.com/buildsv6/images/wide1920/6/1/c/61c8d8a0bf_85372_9fs-9-shutterstock-53402089.jpg</image>
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+ <!--question8:Are you is type 1 diabetes? -->
+    <category>
+        <pattern>yes</pattern>
+        <that>Do you have diabetes</that>
+        <template>
+            Are you is type 1 diabetes?
+        </template>
+    </category>
+    
+    <!--vilitigo-->
+    <category>
+        <pattern>yes</pattern>
+        <that>Are you is type 1 diabetes</that>
+        <template>
+            Maybe you have: <br/>
+            <think><set name = "disease">Vitiligo</set></think>
+            <get name = "disease"/>
+            <image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/08/vitiligo_G_151046848.jpg</image>
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+ <!--question9: Where else do you have symptoms on your body? -->
+    <category>
+        <pattern>no</pattern>
+        <that>Are you is type 1 diabetes</that>
+        <template>
+            Where else do you have symptoms on your body?
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>Where else do you have symptoms on your body</that>
+        <template>
+            Maybe you have: <br/>
+            <think>
+                <set name = "diseases"><star/></set>
+            </think>
+            <set name = "disease"><map name = "skinlocation"><get name = "diseases"/></map></set>
+            <condition name = "disease" value = "Melasma"><image>https://www.vitalskinderm.com/wp-content/uploads/2020/12/Melasma-scaled.jpg</image></condition>
+            <condition name = "disease" value = "Rosacea"><image>https://skinclinics.ca/site/wp-content/uploads/2019/02/skin-condition-rosacea.jpg</image></condition>
+            <condition name = "disease" value = "Impetigo"><image>https://healthjade.net/wp-content/uploads/2020/11/impetigo-contagiosa.jpg</image></condition>
+            <condition name = "disease" value = "Carbuncle"><image>https://media.mercola.com/ImageServer/Public/2018/February/FB/folliculitis-types-fb.jpg</image></condition>
+            
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+
+
+ -------------------------------------------------------------------    
+
+    <category>
+        <pattern>*</pattern>
+        <that>What disease you are</that>
+        <template>
+            
+            <think>
+                <set name = "diseases"><star/></set>
+            </think>
+            <set name = "disease"><get name = "diseases"/></set>
+            <condition name = "disease" value = "Wart"><image>https://advancedcosmeticmedicine.com.au/wp-content/uploads/elementor/thumbs/wart-removal-desktop-2-orf4025zga1ccnmzg93zutrtmit4gcisiab6h9v62w.png</image></condition>
+            <condition name = "disease" value = "Acne"><image>https://cdn.futura-sciences.com/buildsv6/images/wide1920/6/1/c/61c8d8a0bf_85372_9fs-9-shutterstock-53402089.jpg</image></condition>
+            <condition name = "disease" value = "Rosacea"><image>https://skinclinics.ca/site/wp-content/uploads/2019/02/skin-condition-rosacea.jpg</image></condition>
+            <condition name = "disease" value = "Blister"><image>https://1.bp.blogspot.com/-yCi-OeL2BxU/TYtgWJPrPjI/AAAAAAAAAV0/48R_Nr6lh8g/s1600/Big%2Bblister%2B-%2Bside.jpg</image></condition>
+            <condition name = "disease" value = "Melasma"><image>https://cdn.coordiutil.com/imagen-melasma_35-1058685-800-600-1-75.jpg</image></condition>
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+
+-----------------------------------------------------------------
+
+    <category>
+        <pattern>*</pattern>
+        <that>Hi, what are your symptoms</that>
+        <template>
+            Maybe you have: <br/>
+            <think>
+                <set name = "symptom"><star/></set>
+            </think>
+            <set name = "disease"><map name = "skinsymptom"><get name = "symptom"/></map></set>
+
+            <condition name = "disease" value = "Cellulitis"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/01/cellulitismi01apacyu_1484279.jpg</image></condition>
+            <condition name = "disease" value = "Latex allergy"><image>https://healthjade.net/wp-content/uploads/2018/01/latex-allergy.jpeg</image></condition>
+            <condition name = "disease" value = "Chickenpox"><image>https://images.medicinenet.com/images/mobile/hp_promo/measles.jpg</image></condition>
+            <condition name = "disease" value = "Squamous cell carcinoma"><image>https://media.clinicaladvisor.com/images/dsm/ch1122.fig1.jpg</image></condition>
+            <condition name = "disease" value = "Impetigo"><image>https://healthjade.net/wp-content/uploads/2020/11/impetigo-contagiosa.jpg</image></condition>
+            <condition name = "disease" value = "Carbuncle"><image>https://media.mercola.com/ImageServer/Public/2018/February/FB/folliculitis-types-fb.jpg</image></condition>
+            <condition name = "disease" value = "Vitiligo"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/08/vitiligo_G_151046848.jpg</image></condition>
+            <condition name = "disease" value = "Melanoma"><image>https://cdn.sanity.io/images/0vv8moc6/dermatologytimes/08db0a236f4bbf86d92d4acef3f8855d14ffad61-5022x3348.jpg</image></condition>
+            <condition name = "disease" value = "Eczema"><image>https://www.laserandmohs.com/wp-content/uploads/2020/05/shutterstock_1492044644-1.jpg</image></condition>
+            <condition name = "disease" value = "Actinic Keratosis"><image>https://images.ctfassets.net/yixw23k2v6vo/4AR26s6LpmqgoikwOc664S/5578973f349808a18366ede7dd9c62d7/Actinic-Keratosis-iStock-154918058.jpg</image></condition>
+            <condition name = "disease" value = "Hives"><image>https://www.thehealthjournals.com/wp-content/uploads/2019/10/iStock-169952304-1024x765.jpg</image></condition>
+            <condition name = "disease" value = "Keratosis pilaris"><image>https://www.stayathomemum.com.au/wp-content/uploads/2018/08/20170828044707ed2d1636d55605d45684d1d16abf2aca.jpg</image></condition>
+            <condition name = "disease" value = "Psoriasis"><image>https://ajp.com.au/wp-content/uploads/2018/04/83369597_l.jpg</image></condition>
+            <condition name = "disease" value = "Ringworm"><image>https://i.redd.it/pyls6ahz15531.jpg</image></condition>
+
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+
+ <!--question9: Can you type other symptom?-->
+    <category>
+        <pattern>itchy</pattern>
+        <template>Can you type other symptom?</template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Can you type other symptom</that>
+        <template>
+            Maybe you have: <br/>
+            <think><set name = "symptoms"><star/></set></think>
+            <set name = "disease"><map name = "skinsymptom"><get name = "symptoms"/></map></set>
+
+            <condition name = "disease" value = "Eczema"><image>https://www.laserandmohs.com/wp-content/uploads/2020/05/shutterstock_1492044644-1.jpg</image></condition>
+            <condition name = "disease" value = "Actinic Keratosis"><image>https://images.ctfassets.net/yixw23k2v6vo/4AR26s6LpmqgoikwOc664S/5578973f349808a18366ede7dd9c62d7/Actinic-Keratosis-iStock-154918058.jpg</image></condition>
+            <condition name = "disease" value = "Hives"><image>https://www.thehealthjournals.com/wp-content/uploads/2019/10/iStock-169952304-1024x765.jpg</image></condition>
+            <condition name = "disease" value = "Keratosis pilaris"><image>https://www.stayathomemum.com.au/wp-content/uploads/2018/08/20170828044707ed2d1636d55605d45684d1d16abf2aca.jpg</image></condition>
+            <condition name = "disease" value = "Psoriasis"><image>https://ajp.com.au/wp-content/uploads/2018/04/83369597_l.jpg</image></condition>
+            <condition name = "disease" value = "Ringworm"><image>https://i.redd.it/pyls6ahz15531.jpg</image></condition>
+
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+    ------------------------------------------------------------------------
+    <category>
+        <pattern>*</pattern>
+        <that>Is it caused by what</that>
+        <template>
+            Maybe you have: <br/>
+            <think><set name = "causeby"><star/></set></think>
+            <set name = "disease"><map name = "skincauseby"><get name = "causeby"/></map></set>
+            <condition name = "disease" value = "Cellulitis"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/01/cellulitismi01apacyu_1484279.jpg</image></condition>
+            <condition name = "disease" value = "Latex allergy"><image>https://healthjade.net/wp-content/uploads/2018/01/latex-allergy.jpeg</image></condition>
+            <condition name = "disease" value = "Chickenpox"><image>https://images.medicinenet.com/images/mobile/hp_promo/measles.jpg</image></condition>
+            <condition name = "disease" value = "Squamous cell carcinoma"><image>https://media.clinicaladvisor.com/images/dsm/ch1122.fig1.jpg</image></condition>
+            <condition name = "disease" value = "Impetigo"><image>https://healthjade.net/wp-content/uploads/2020/11/impetigo-contagiosa.jpg</image></condition>
+            <condition name = "disease" value = "Carbuncle"><image>https://media.mercola.com/ImageServer/Public/2018/February/FB/folliculitis-types-fb.jpg</image></condition>
+            <condition name = "disease" value = "Vitiligo"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/08/vitiligo_G_151046848.jpg</image></condition>
+            <condition name = "disease" value = "Melanoma"><image>https://cdn.sanity.io/images/0vv8moc6/dermatologytimes/08db0a236f4bbf86d92d4acef3f8855d14ffad61-5022x3348.jpg</image></condition>
+            <condition name = "disease" value = "Eczema"><image>https://www.laserandmohs.com/wp-content/uploads/2020/05/shutterstock_1492044644-1.jpg</image></condition>
+            <condition name = "disease" value = "Actinic Keratosis"><image>https://images.ctfassets.net/yixw23k2v6vo/4AR26s6LpmqgoikwOc664S/5578973f349808a18366ede7dd9c62d7/Actinic-Keratosis-iStock-154918058.jpg</image></condition>
+            <condition name = "disease" value = "Hives"><image>https://www.thehealthjournals.com/wp-content/uploads/2019/10/iStock-169952304-1024x765.jpg</image></condition>
+            <condition name = "disease" value = "Keratosis pilaris"><image>https://www.stayathomemum.com.au/wp-content/uploads/2018/08/20170828044707ed2d1636d55605d45684d1d16abf2aca.jpg</image></condition>
+            <condition name = "disease" value = "Psoriasis"><image>https://ajp.com.au/wp-content/uploads/2018/04/83369597_l.jpg</image></condition>
+            <condition name = "disease" value = "Ringworm"><image>https://i.redd.it/pyls6ahz15531.jpg</image></condition>
+            <condition name = "disease" value = "Wart"><image>https://advancedcosmeticmedicine.com.au/wp-content/uploads/elementor/thumbs/wart-removal-desktop-2-orf4025zga1ccnmzg93zutrtmit4gcisiab6h9v62w.png</image></condition>
+            <condition name = "disease" value = "Acne"><image>https://cdn.futura-sciences.com/buildsv6/images/wide1920/6/1/c/61c8d8a0bf_85372_9fs-9-shutterstock-53402089.jpg</image></condition>
+            <condition name = "disease" value = "Rosacea"><image>https://skinclinics.ca/site/wp-content/uploads/2019/02/skin-condition-rosacea.jpg</image></condition>
+            <condition name = "disease" value = "Blister"><image>https://1.bp.blogspot.com/-yCi-OeL2BxU/TYtgWJPrPjI/AAAAAAAAAV0/48R_Nr6lh8g/s1600/Big%2Bblister%2B-%2Bside.jpg</image></condition>
+            <condition name = "disease" value = "Melasma"><image>https://cdn.coordiutil.com/imagen-melasma_35-1058685-800-600-1-75.jpg</image></condition>
+            <button>
+                <text>Treatment of <get name = "disease"/></text>
+                <postback>treatment</postback>
+            </button>
+            <button>
+                <text>Risk Factor of <get name = "disease"/></text>
+                <postback>riskfactor</postback>
+            </button>
+            <button>
+                <text>May Cause By of <get name = "disease"/></text>
+                <postback>cause</postback>
+            </button>
+            <button>
+                <text>Type of <get name = "disease"/></text>
+                <postback>typeof</postback>
+            </button>
+            <button>
+                <text>Common Location of <get name = "disease"/></text>
+                <postback>cl</postback>
+            </button>
+            <button>
+                <text>Result of <get name = "disease"/></text>
+                <postback>result</postback>
+            </button>
+            <button>
+                <text>Stages of <get name = "disease"/></text>
+                <postback>stage</postback>
+            </button>
+        </template>
+    </category>
+
+<!--button-->
+    <category>
+        <pattern>cl</pattern>
+        <template>
+            <map name = "skincl"><get name = "disease"/></map>
+        </template>
+    </category>
+
+    <category>
+        <pattern>treatment</pattern>
+        <template>
+        <map name = "skintreatment"><get name = "disease"/></map>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>riskfactor</pattern>
+        <template>
+        <map name = "skinriskfactor"><get name = "disease"/></map>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>cause</pattern>
+        <template>
+        <map name = "skincause"><get name = "disease"/></map>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>typeof</pattern>
+        <template>
+            <map name = "skintype"><get name = "disease"/></map>
+        </template>
+    </category>
+    
+
+    <category>
+        <pattern>result</pattern>
+        <template>
+            <map name = "skinresult"><get name = "disease"/></map>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>stage</pattern>
+        <template>
+            <map name = "skinstage"><get name = "disease"/></map>
+        </template>
+    </category>
+
+
+<!--stage -->
+    <category>
+        <pattern>Stage of *</pattern>
+        <template>
+           <map name = "skinstage"><star/></map>
+        </template>
+    </category>
+    
+<!--type-->
+    <category>
+        <pattern>Type of *</pattern>
+        <template>
+           <map name = "skintype"><star/></map>
+        </template>
+    </category>
+
+<!--treatment-->
+    <category>
+        <pattern>* treatment</pattern>
+        <template>
+           <map name = "skintreatment"><star/></map>
+        </template>
+    </category>
+
+<!--riskfactor-->
+    <category>
+        <pattern>Risk factor of *</pattern>
+        <template>
+           <map name = "skinriskfactor"><star/></map>
+        </template>
+    </category>
+
+<!--may cause by-->
+    <category>
+        <pattern>* may cause by</pattern>
+        <template>
+           <map name = "skincause"><star/></map>
+        </template>
+    </category>
+
+<!--common location-->
+    <category>
+        <pattern>* location</pattern>
+        <template>
+           <map name = "skincl"><star/></map>
+        </template>
+    </category>
+
+<!--result-->
+    <category>
+        <pattern>* will result</pattern>
+        <template>
+           <map name = "skinresult"><star/></map>
+        </template>
+    </category>
+
+<!-- spread through-->
+    <category>
+        <pattern>Varicella-zoster virus (VZV) spread through</pattern>
+        <template>
+            saliva, coughing, sneezing
+        </template>
+    </category>
+    
+<!--look like-->
+    <category>
+        <pattern>How does Wart look like?</pattern>
+        <template>rough, grainy appearance, rounded top, small, flat top, tiny flap</template>
+    </category>
+    
+    <category>
+        <pattern>How does Melanoma look like?</pattern>
+        <template>Asymmetry, irregular, Evolving, larger than 6 mm, More than one color</template>
+    </category>
+    
+
+
+</aiml>

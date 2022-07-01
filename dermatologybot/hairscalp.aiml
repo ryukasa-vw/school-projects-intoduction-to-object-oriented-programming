@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+	<category>
+        <pattern>HAIR</pattern>
+        <template>
+            Hi how can I help you<br/>
+            Do you know the disease name?
+        </template>
+    </category>
+    
+    <!-- 1 If user know disease name -->
+    <category>
+        <pattern>YES</pattern>
+        <that>Hi how can I help you Do you know the disease name</that>
+        <template>What is your disease name?</template>
+    </category>
+    
+    <category>
+        <pattern><set>hairscalp0</set></pattern>
+        <that>What is your disease name</that>
+        <template>
+        <think><set name = "disease"><star/></set></think>
+        This is the image of <get name = "disease"></get>
+        
+        <condition name = "disease" value = "Alopecia Areata"><image>https://www.avensonline.org/blog/wp-content/uploads/2016/07/alopecia-areata.jpg</image></condition>
+        <condition name = "disease" value = "Creadle Cap"><image>https://post.healthline.com/wp-content/uploads/2021/02/baby-with-cradle-cap-on-head-and-brows-732x549-thumbnail.jpg</image></condition>
+        <condition name = "disease" value = "Bamboo Hair"><image>https://upload.wikimedia.org/wikipedia/commons/e/e8/Tricho-hepato-enteric_syndrome_%281%29.jpg</image></condition>
+        <condition name = "disease" value = "Scalp Psoriasis"><image>https://images.everydayhealth.com/images/skin-beauty/psoriasis/psoriasis-scalp-722x406.jpg?sfvrsn=944d6bd8_0</image></condition>
+        <condition name = "disease" value = "Ringworm"><image>https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/41/ds00892-sn7_ringwormscalp1thu_jpg.jpg</image></condition>
+        <condition name = "disease" value = "Head Lice Infestation"><image>https://i2-prod.mirror.co.uk/incoming/article6438420.ece/ALTERNATES/s1168v/Sequence-05Still001.jpg</image></condition>
+        <condition name = "disease" value = "Lichen Planopilaris"><image>https://www.uptodate.com/contents/images/DERM/90009/Lichenplanopilarisreticul.jpg</image></condition>
+        <condition name = "disease" value = "Seborheic Dermatitis"><image>https://media.musely.com/u/d37ddd9e-22db-4951-8f29-081594cc9739.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis"><image>https://post.healthline.com/wp-content/uploads/2019/02/Moderate_scalp_folliculitis-1296x728-gallery_slide3.jpg</image></condition>
+        <condition name = "disease" value = "Dandruff"><image>https://images.herzindagi.info/image/2018/Nov/dandruff-ayurveda.jpg</image></condition>
+        <condition name = "disease" value = "O shape"><image>https://yunnamhaircare.com.my/2019/img/o-shape.jpg</image></condition>
+        <condition name = "disease" value = "M shape"><image>http://www.jonssonprotein.com.sg/wp-content/uploads/2016/04/m-shaped.jpg</image></condition>
+        <condition name = "disease" value = "Menopause Hair Loss"><image>https://www.menopausecentre.com.au/wp-content/uploads/2015/11/menopause-hair-loss-medication-300x186.jpg</image></condition>
+        
+        What you want to know about this disease?
+        <button>
+            <text>Treatment</text>
+            <postback>Treatment</postback>
+        </button>
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms</postback>
+        </button>
+        <button>
+            <text>Cause of Disease</text>
+            <postback>Cause</postback>
+        </button>
+        
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>What is your disease name</that>
+        <template>
+            We dun have disease with name <star/>
+        </template>
+    </category>
+    
+    <!-- 2 If user don't know disease name -->
+    <category>
+        <pattern>NO</pattern>
+        <that>Hi how can I help you Do you know the disease name</that>
+        <template>What symptoms do you have?</template>
+    </category>
+    
+    <category>
+        <pattern><set>hairscalp5</set></pattern>
+        <that>What symptoms do you have</that>
+        <template>
+        <think><set name = "symptom"><star/></set></think>
+        This symptom belongs to <set name = "disease"><map name = "hairscalp5"><get name = "symptom"/></map></set>
+        
+        <condition name = "disease" value = "Alopecia Areata"><image>https://www.avensonline.org/blog/wp-content/uploads/2016/07/alopecia-areata.jpg</image></condition>
+        <condition name = "disease" value = "Creadle Cap"><image>https://post.healthline.com/wp-content/uploads/2021/02/baby-with-cradle-cap-on-head-and-brows-732x549-thumbnail.jpg</image></condition>
+        <condition name = "disease" value = "Bamboo Hair"><image>https://upload.wikimedia.org/wikipedia/commons/e/e8/Tricho-hepato-enteric_syndrome_%281%29.jpg</image></condition>
+        <condition name = "disease" value = "Scalp Psoriasis"><image>https://images.everydayhealth.com/images/skin-beauty/psoriasis/psoriasis-scalp-722x406.jpg?sfvrsn=944d6bd8_0</image></condition>
+        <condition name = "disease" value = "Ringworm"><image>https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/41/ds00892-sn7_ringwormscalp1thu_jpg.jpg</image></condition>
+        <condition name = "disease" value = "Head Lice Infestation"><image>https://i2-prod.mirror.co.uk/incoming/article6438420.ece/ALTERNATES/s1168v/Sequence-05Still001.jpg</image></condition>
+        <condition name = "disease" value = "Lichen Planopilaris"><image>https://www.uptodate.com/contents/images/DERM/90009/Lichenplanopilarisreticul.jpg</image></condition>
+        <condition name = "disease" value = "Seborheic Dermatitis"><image>https://media.musely.com/u/d37ddd9e-22db-4951-8f29-081594cc9739.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis"><image>https://post.healthline.com/wp-content/uploads/2019/02/Moderate_scalp_folliculitis-1296x728-gallery_slide3.jpg</image></condition>
+        <condition name = "disease" value = "Dandruff"><image>https://images.herzindagi.info/image/2018/Nov/dandruff-ayurveda.jpg</image></condition>
+        <condition name = "disease" value = "O shape"><image>https://yunnamhaircare.com.my/2019/img/o-shape.jpg</image></condition>
+        <condition name = "disease" value = "M shape"><image>http://www.jonssonprotein.com.sg/wp-content/uploads/2016/04/m-shaped.jpg</image></condition>
+        <condition name = "disease" value = "Menopause Hair Loss"><image>https://www.menopausecentre.com.au/wp-content/uploads/2015/11/menopause-hair-loss-medication-300x186.jpg</image></condition>
+        
+        <button>
+            <text>Treatment</text>
+            <postback>Treatment</postback>
+        </button>
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms</postback>
+        </button>
+        <button>
+            <text>Cause of Disease</text>
+            <postback>Cause</postback>
+        </button>
+        
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>What symptoms do you have</that>
+        <template>
+            There is no disease with symptoms <star/>
+        </template>
+    </category>
+    
+    
+    <!-- 2.1 if the symptoms is itchy -->  
+    <category>
+        <pattern>ITCHY</pattern>
+        <that>What symptoms do you have</that>
+        <template>
+            Can you enter other symptoms<br/>
+            There are total of 7 disease have the symptom of itchy
+        </template>
+    </category>
+    
+    <category>
+        <pattern><set>hairscalpitchy5</set></pattern>
+        <that>Can you enter other symptoms There are total of 7 disease have the symptom of itchy</that>
+        <template>
+        <think><set name = "symptom"><star/></set></think>
+        This symptom belongs to <set name = "disease"><map name = "hairscalp5"><get name = "symptom"/></map></set>
+        
+        <condition name = "disease" value = "Scalp Psoriasis"><image>https://images.everydayhealth.com/images/skin-beauty/psoriasis/psoriasis-scalp-722x406.jpg?sfvrsn=944d6bd8_0</image></condition>
+        <condition name = "disease" value = "Ringworm"><image>https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/41/ds00892-sn7_ringwormscalp1thu_jpg.jpg</image></condition>
+        <condition name = "disease" value = "Head Lice Infestation"><image>https://i2-prod.mirror.co.uk/incoming/article6438420.ece/ALTERNATES/s1168v/Sequence-05Still001.jpg</image></condition>
+        <condition name = "disease" value = "Lichen Planopilaris"><image>https://www.uptodate.com/contents/images/DERM/90009/Lichenplanopilarisreticul.jpg</image></condition>
+        <condition name = "disease" value = "Seborheic Dermatitis"><image>https://media.musely.com/u/d37ddd9e-22db-4951-8f29-081594cc9739.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis"><image>https://post.healthline.com/wp-content/uploads/2019/02/Moderate_scalp_folliculitis-1296x728-gallery_slide3.jpg</image></condition>
+        <condition name = "disease" value = "Dandruff"><image>https://images.herzindagi.info/image/2018/Nov/dandruff-ayurveda.jpg</image></condition>
+
+        <button>
+            <text>Treatment</text>
+            <postback>Treatment</postback>
+        </button>
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms</postback>
+        </button>
+        <button>
+            <text>Cause of Disease</text>
+            <postback>Cause</postback>
+        </button>
+        
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Can you enter other symptoms There are total of 7 disease have the symptom of itchy</that>
+        <template>
+            There is no disease with symptoms itchy and <star/>
+        </template>
+    </category>
+    
+    <!-- 2.2 if the symptoms is Hair become thin and dull -->
+    <category>
+        <pattern>HAIR BECOME THIN AND DULL</pattern>
+        <that>What symptoms do you have</that>
+        <template>
+            Can you enter other symptoms<br/>
+            There are total of 3 disease have the symptom of Hair become thin and dull
+        </template>
+    </category>
+    
+<category>
+        <pattern><set>hairscalpdull5</set></pattern>
+        <that>Can you enter other symptoms There are total of 3 disease have the symptom of Hair become thin and dull</that>
+        <template>
+        <think><set name = "symptom"><star/></set></think>
+        This symptom belongs to <set name = "disease"><map name = "hairscalp5"><get name = "symptom"/></map></set>
+        
+        <condition name = "disease" value = "O shape"><image>https://yunnamhaircare.com.my/2019/img/o-shape.jpg</image></condition>
+        <condition name = "disease" value = "M shape"><image>http://www.jonssonprotein.com.sg/wp-content/uploads/2016/04/m-shaped.jpg</image></condition>
+        <condition name = "disease" value = "Menopause Hair Loss"><image>https://www.menopausecentre.com.au/wp-content/uploads/2015/11/menopause-hair-loss-medication-300x186.jpg</image></condition>
+
+        <button>
+            <text>Treatment</text>
+            <postback>Treatment</postback>
+        </button>
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms</postback>
+        </button>
+        <button>
+            <text>Cause of Disease</text>
+            <postback>Cause</postback>
+        </button>
+        
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Can you enter other symptoms There are total of 3 disease have the symptom of Hair become thin and dull</that>
+        <template>
+            There is no disease with symptoms hair become thin and dull and <star/>
+        </template>
+    </category>
+    
+    <!-- 3 Treatment -->  
+    <category>
+        <pattern>TREATMENT</pattern>
+        <template>
+        <map name = "hairscalp7"><get name = "disease"/></map><br/><br/>
+     
+        <condition name = "disease" value = "Head Lice Infestation">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>http://www.liceninja.com/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Creadle Cap">You can get shampoo like this<image>https://cdn-o.fishpond.com/0117/359/337/253849117/original.jpeg</image></condition>
+        <condition name = "disease" value = "Scalp Psoriasis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://www.kpjhealth.com.my/damansara/doctor/dato-dr-zalmy-azizan-mohd-ali-azizan</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Ringworm">You can get medicated cream like this<image>https://www.lotrimin.com/sites/g/files/vrxlpx35381/files/2020-08/ringworm-cream-front.png?imwidth=320</image></condition>
+        <condition name = "disease" value = "Alopecia Areata">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Lichen Planopilaris">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://qmed.asia/ansh/book/272/5131</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Seborheic Dermatitis">You can get medicated cream like this<image>https://www.ubuy.com.my/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzF3WEsxRGJXNUwuX0FDX1NMMTUwMF8uanBn.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://nazirinskinclinic.com/faqs</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Dandruff">You can get shampoo like this<image>https://mindbodygreen-res.cloudinary.com/images/w_767,q_auto:eco,f_auto,fl_lossy/org/vwlx26c96koxdo21q/02-avalon.png</image></condition>
+        <condition name = "disease" value = "O shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "M shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Menopause Hair Loss">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+
+        <br/>You might also want to know about
+        <button>
+            <text>Cause of disease</text>
+            <postback>Cause2</postback>
+        </button>
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms4</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Treatment2</pattern>
+        <template>
+        <map name = "hairscalp7"><get name = "disease"/></map><br/><br/>
+                
+        <condition name = "disease" value = "Head Lice Infestation">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>http://www.liceninja.com/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Creadle Cap">You can get shampoo like this<image>https://cdn-o.fishpond.com/0117/359/337/253849117/original.jpeg</image></condition>
+        <condition name = "disease" value = "Scalp Psoriasis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://www.kpjhealth.com.my/damansara/doctor/dato-dr-zalmy-azizan-mohd-ali-azizan</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Ringworm">You can get medicated cream like this<image>https://www.lotrimin.com/sites/g/files/vrxlpx35381/files/2020-08/ringworm-cream-front.png?imwidth=320</image></condition>
+        <condition name = "disease" value = "Alopecia Areata">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Lichen Planopilaris">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://qmed.asia/ansh/book/272/5131</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Seborheic Dermatitis">You can get medicated cream like this<image>https://www.ubuy.com.my/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzF3WEsxRGJXNUwuX0FDX1NMMTUwMF8uanBn.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://nazirinskinclinic.com/faqs</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Dandruff">You can get shampoo like this<image>https://mindbodygreen-res.cloudinary.com/images/w_767,q_auto:eco,f_auto,fl_lossy/org/vwlx26c96koxdo21q/02-avalon.png</image></condition>
+        <condition name = "disease" value = "O shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "M shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Menopause Hair Loss">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+
+        Do you want to know about all its symptoms?
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms3</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Treatment3</pattern>
+        <template>
+        <map name = "hairscalp7"><get name = "disease"/></map><br/><br/>
+        
+        <condition name = "disease" value = "Head Lice Infestation">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>http://www.liceninja.com/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Creadle Cap">You can get shampoo like this<image>https://cdn-o.fishpond.com/0117/359/337/253849117/original.jpeg</image></condition>
+        <condition name = "disease" value = "Scalp Psoriasis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://www.kpjhealth.com.my/damansara/doctor/dato-dr-zalmy-azizan-mohd-ali-azizan</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Ringworm">You can get medicated cream like this<image>https://www.lotrimin.com/sites/g/files/vrxlpx35381/files/2020-08/ringworm-cream-front.png?imwidth=320</image></condition>
+        <condition name = "disease" value = "Alopecia Areata">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Lichen Planopilaris">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://qmed.asia/ansh/book/272/5131</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Seborheic Dermatitis">You can get medicated cream like this<image>https://www.ubuy.com.my/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzF3WEsxRGJXNUwuX0FDX1NMMTUwMF8uanBn.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://nazirinskinclinic.com/faqs</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Dandruff">You can get shampoo like this<image>https://mindbodygreen-res.cloudinary.com/images/w_767,q_auto:eco,f_auto,fl_lossy/org/vwlx26c96koxdo21q/02-avalon.png</image></condition>
+        <condition name = "disease" value = "O shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "M shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Menopause Hair Loss">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        
+        </template>
+    </category>
+    
+        <category>
+        <pattern>Treatment4</pattern>
+        <template>
+        <map name = "hairscalp7"><get name = "disease"/></map><br/><br/>
+        
+        <condition name = "disease" value = "Head Lice Infestation">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>http://www.liceninja.com/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Creadle Cap">You can get shampoo like this<image>https://cdn-o.fishpond.com/0117/359/337/253849117/original.jpeg</image></condition>
+        <condition name = "disease" value = "Scalp Psoriasis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://www.kpjhealth.com.my/damansara/doctor/dato-dr-zalmy-azizan-mohd-ali-azizan</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Ringworm">You can get medicated cream like this<image>https://www.lotrimin.com/sites/g/files/vrxlpx35381/files/2020-08/ringworm-cream-front.png?imwidth=320</image></condition>
+        <condition name = "disease" value = "Alopecia Areata">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Lichen Planopilaris">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://qmed.asia/ansh/book/272/5131</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Seborheic Dermatitis">You can get medicated cream like this<image>https://www.ubuy.com.my/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzF3WEsxRGJXNUwuX0FDX1NMMTUwMF8uanBn.jpg</image></condition>
+        <condition name = "disease" value = "Folliculitis">You can get treatment from this Specialist.
+            <link>
+                <text>Specialist</text>
+                <url>https://nazirinskinclinic.com/faqs</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Dandruff">You can get shampoo like this<image>https://mindbodygreen-res.cloudinary.com/images/w_767,q_auto:eco,f_auto,fl_lossy/org/vwlx26c96koxdo21q/02-avalon.png</image></condition>
+        <condition name = "disease" value = "O shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "M shape">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+        <condition name = "disease" value = "Menopause Hair Loss">You can get treatment from this Specialist.
+            <link>
+                <text>Specalist</text>
+                <url>https://hairdoc.com.my/severe-dandruff/</url>
+            </link>
+        </condition>
+
+        Do you want to know about the reason causing this disease?
+        <button>
+            <text>Cause of disease</text>
+            <postback>cause3</postback>
+        </button>
+        </template>
+    </category>
+    
+    <!-- 4 Cause --> 
+    <category>
+        <pattern>CAUSE</pattern>
+        <template>
+        <map name = "hairscalp6"><get name = "disease"/></map><br/><br/>
+        You might also want to know about
+        <button>
+            <text>Treatment</text>
+            <postback>Treatment2</postback>
+        </button>
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms2</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>CAUSE2</pattern>
+        <template>
+        <map name = "hairscalp6"><get name = "disease"/></map><br/>
+        Do you want to know about all its symptoms?
+        <button>
+            <text>Symptoms</text>
+            <postback>Symptoms3</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>CAUSE3</pattern>
+        <template>
+        <map name = "hairscalp6"><get name = "disease"/></map><br/>
+        </template>
+    </category>
+    
+
+    
+    <category>
+        <pattern>CAUSE4</pattern>
+        <template>
+        <map name = "hairscalp6"><get name = "disease"/></map><br/>
+        Do you want to know about its treatment method?
+        <button>
+            <text>Treatment</text>
+            <postback>treatment3</postback>
+        </button>
+        </template>
+    </category>
+    
+    
+    <!-- 5 Symptoms --> 
+    <category>
+        <pattern>SYMPTOMS</pattern>
+        <template>
+        <map name = "hairscalp52"><get name = "disease"/></map><br/>
+        You might also want to know about
+        <button>
+            <text>Treatment</text>
+            <postback>Treatment4</postback>
+        </button>
+        <button>
+            <text>Cause of disease</text>
+            <postback>cause4</postback>
+        </button>?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>SYMPTOMS2</pattern>
+        <template>
+        <map name = "hairscalp52"><get name = "disease"/></map><br/>
+        Do you want to know about its treatment method?
+        <button>
+            <text>Treatment</text>
+            <postback>treatment3</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>SYMPTOMS3</pattern>
+        <template>
+        <map name = "hairscalp52"><get name = "disease"/></map>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>SYMPTOMS4</pattern>
+        <template>
+        <map name = "hairscalp52"><get name = "disease"/></map><br/>
+        Do you want to know about the reason causing this disease?
+        <button>
+            <text>Cause of disease</text>
+            <postback>cause3</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>TQ</pattern>
+        <template>You are welcome</template>
+    </category>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</aiml>

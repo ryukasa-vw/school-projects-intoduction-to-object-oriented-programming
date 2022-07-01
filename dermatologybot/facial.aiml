@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    
+    <category>
+        <pattern>FACIAL</pattern>
+        <template>Hi, I am FacialBot here to help you<br/>
+        Do you know the disease that you have?
+       </template>
+    </category>
+    
+    <category>
+        <pattern>YES</pattern>
+        <that>Hi, I am FacialBot here to help you
+        Do you know the disease that you have
+        </that>
+        <template>Which type of disease do you want to know?</template>
+    </category>
+    
+    <category>
+        <pattern>NO</pattern>
+        <that>Hi, I am FacialBot here to help you
+        Do you know the disease that you have
+        </that>
+        <template>What is your symptom?</template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Hi, I am FacialBot here to help you
+        Do you know the disease that you have</that>
+        <template>Do you know the disease that you have<br/>
+        Please kindly input yes or no only
+        </template>
+    </category>
+    
+    <category>
+        <pattern>YES</pattern>
+        <that>Do you know the disease that you have
+        Please kindly input yes or no only</that>
+        <template>Which type of disease do you want to know?</template>
+    </category>
+    
+    <category>
+        <pattern>NO</pattern>
+        <that>Do you know the disease that you have
+        Please kindly input yes or no only</that>
+        <template>What is your symptom?</template>
+    </category>
+    
+    <category>
+        <pattern><set>disease</set></pattern>
+        <that>Which type of disease do you want to know</that>
+        <template>
+        <think><set name = "fdisease"><star/></set></think>
+        
+        <condition name = "fdisease" value = "Rosacea"><image>https://findadermatologist.com/wp-content/uploads/2014/10/Rosacea-Type-1-redness.jpg</image></condition>
+        <condition name = "fdisease" value = "Blushing"><image>https://media.self.com/photos/5ad7a6c05996d57eda91cc02/3:4/w_810,h_1080,c_limit/lex.jpg</image></condition>
+        <condition name = "fdisease" value = "Rhinophyma"><image>https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/05/ds00308_im00816_sn7_rhinophymathu_jpg.jpg</image></condition>
+        <condition name = "fdisease" value = "Blepharophyma"><image>https://o.quizlet.com/V-nIKcH0tXx5B4XLzvKrGg.jpg</image></condition>
+        <condition name = "fdisease" value = "Aging Skin"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/03/ch709.fig1_-564x848.jpg</image></condition>
+        <condition name = "fdisease" value = "Actinic Keratoses"><image>https://www.dermcoll.edu.au/wp-content/uploads/2014/09/Actinic-keratoses-1_michelle-hunt.jpeg</image></condition>
+        <condition name = "fdisease" value = "Basal Cell Carcinoma"><image>https://theskindoctor.melbourne/wp-content/uploads/2021/05/skin-doctor-basal-cell-carcinoma.jpg</image></condition>
+        <condition name = "fdisease" value = "Lentigines"><image>https://ykhoa.org/d/images/DERM/81287_Solar_lentigines_face.jpg</image></condition>
+        <condition name = "fdisease" value = "Flat seborrheic keratoses"><image>https://i.pinimg.com/originals/1a/f3/08/1af308a0a7ff4a56c31126b2c38ae5d6.jpg</image></condition>
+        <condition name = "fdisease" value = "Cherry Angiomas"><image>https://sa1s3optim.patientpop.com/assets/images/provider/photos/2236943.jpg</image></condition>
+        <condition name = "fdisease" value = "Sebaceous hyperplasia"><image>https://healthjade.net/wp-content/uploads/2019/07/sebaceous-hyperplasia.jpg</image></condition>
+        <condition name = "fdisease" value = "Senile Purpura"><image>https://casereports.bmj.com/content/bmjcr/14/2/e241456/F1.large.jpg</image></condition>
+        <condition name = "fdisease" value = "Comedonal Acne"><image>https://parade.com/wp-content/uploads/2021/03/best-blackhead-popping-videos.jpg</image></condition>
+        <condition name = "fdisease" value = "Papules"><image>https://cdn.mdedge.com/files/s3fs-public/Gupta_Quiz.JPG</image></condition>
+        <condition name = "fdisease" value = "Putsules"><image>https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325342/pustules.jpg</image></condition>
+        <condition name = "fdisease" value = "Nodulocystic Acne"><image>https://media.sciencephoto.com/c0/38/44/89/c0384489-800px-wm.jpg</image></condition>
+        <condition name = "fdisease" value = "Acne Vulgaris"><image>https://kblimskinclinic.com/wp-content/uploads/2020/12/acne-pustulesandpapules-796x1024.jpg</image></condition>
+        <condition name = "fdisease" value = "Ice Pick"><image>https://sozoclinic.sg/wp-content/uploads/Ice-Pick-Scar-Treatments-Singapore-1112x650.jpg</image></condition>
+        <condition name = "fdisease" value = "Boxcar Scars"><image>https://acne-scar-treatment.com/wp-content/uploads/2020/01/treating-acne-scars-in-dark-skin-types.jpg</image></condition>
+        <condition name = "fdisease" value = "Atrophic Scars"><image>https://www.olivaclinic.com/wp-content/uploads/2020/08/800x400.jpg</image></condition>
+        <condition name = "fdisease" value = "Hypertrophic Scars"><image>https://www.revival.com.my/image/scar.jpg</image></condition>
+        <condition name = "fdisease" value = "Postinflammatory Hypopigmentation"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/01/ca092018dermclinicscase2_1487802-860x509.jpg</image></condition>
+        <condition name = "fdisease" value = "Postinflammatory Pigmentation"><image>https://images-1.eucerin.com/~/media/eucerin/international/about-skin/indications/postinflammatory-hyperpigmentation/pih-update2018/euc-int_about-skin_pih_01.jpg</image></condition>
+        <condition name = "fdisease" value = "Postinflammatory Erythema"><image>https://static.acne.org/ipb_uploads/monthly_2017_01/20170125_204152.jpg.98fe30c2bf8b3d281a1f5ae52baf0ef0.jpg</image></condition>
+        <condition name = "fdisease" value = "Cystic Acne"><image>https://www.thesun.co.uk/wp-content/uploads/2020/08/NINTCHDBPICT000603226847.jpg</image></condition>
+        <condition name = "fdisease" value = "Adult Acne"><image>https://www.theskincareclinic.com.au/wp-content/uploads/2019/06/enlarged-pores-tips-1200px-wide-1024x459.jpg</image></condition>
+        Do you want to know the symptom?
+        <button>
+            <text>Symptom</text>
+            <postback>FSYMPTOM</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>FSYMPTOM</pattern>
+        <template><br/>Symptom:<br/><get name = "fdisease"></get>:<map name = "facialdisease"><get name = "fdisease"></get></map><br/>
+        <br/> Do you want to know the treatment?
+        <button>
+            <text>Treatment</text>
+            <postback>FTREATMENT</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>FTREATMENT</pattern>
+        <template><br/>Treatment:<br/><get name = "fdisease"></get>:<map name = "facialtreatment"><get name = "fdisease"></get></map><br/>
+        <br/> Do you want to know the function of the treatment?
+        <button>
+            <text>Function of Treatment</text>
+            <postback>FTFUNCTION</postback>
+        </button>
+        </template>
+    </category>
+    
+     <category>
+        <pattern>FTFUNCTION</pattern>
+        <template><br/>Function of Treatment:<br/><get name = "fdisease"></get>:<map name = "facialtreatfunction"><get name = "fdisease"></get></map><br/>
+        <br/> Do you want to visit the dermatologist?
+        <button>
+            <text>Dermatology Clinic</text>
+            <postback>DERMA</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>DERMA</pattern>
+        <template>Which state are you currently living in?</template>
+    </category>
+    
+    <category>
+        <pattern><set>states</set></pattern>
+        <that>Which state are you currently living in</that>
+        <template> Here is the dermatology clincic in your state. You may click the link below for the dermatology clinic<br/>
+        <think><set name = "fstates"><star/></set></think>
+        <condition name = "fstates" value = "Negeri Sembilan "><link><text>Negeri Sembilan Clinic</text><url>https://klinikhana.com/?gclid=CjwKCAiApfeQBhAUEiwA7K_UH1deyJtK3VS200QB93g9BIqn5QI5-SvRjaeiGzQ9pr_Ow1AUddm41xoCwAcQAvD_BwE</url></link></condition>
+        <condition name = "fstates" value = "Selangor"><link><text>Selangor Clinic</text><url>https://www.drchongclinic.com/?gclid=CjwKCAiAgvKQBhBbEiwAaPQw3Gwn8p9OC2f_vFu9HUGupg6UZLoXgidYmSphvq8U--M7AmNfzfSbAhoC8eQQAvD_BwE</url></link></condition>
+        <condition name = "fstates" value = "Penang"><link><text>Penang Clinic</text><url>https://limskinspecialistclinic.com/</url></link></condition>
+        <condition name = "fstates" value = "Pahang"><link><text>Pahang Clinic</text><url>https://www.lookp.com/ko-skin-specialist-kuantan/</url></link></condition>
+        <condition name = "fstates" value = "Kedah"><link><text>Kedah Clinic</text><url>https://celinetanclinic.com/</url></link></condition>
+        <condition name = "fstates" value = "Perak"><link><text>Perak Clinic</text><url>https://www.koskinspecialist.com/?gclid=CjwKCAiApfeQBhAUEiwA7K_UHzHaktFX80D70e3jFCI9ZmGffwLBSky2ywqk_4GHHeAIAqbdDFj0PRoCF8wQAvD_BwE</url></link></condition>
+        <condition name = "fstates" value = "Sabah"><link><text>Sabah Clinic</text><url>https://www.koskinspecialist.com/?gclid=CjwKCAiApfeQBhAUEiwA7K_UHzHaktFX80D70e3jFCI9ZmGffwLBSky2ywqk_4GHHeAIAqbdDFj0PRoCF8wQAvD_BwE</url></link></condition>
+        <condition name = "fstates" value = "Sarawak"><link><text>Sarawak Clinic</text><url>http://www.klinikdrkon.com/</url></link></condition>
+        <condition name = "fstates" value = "Terengganu"><link><text>Terengganu Clinic</text><url>https://my.worldorgs.com/katalog/marang/klinik/klinik-d</url></link></condition>
+        <condition name = "fstates" value = "Johor"><link><text>Johor Clinic</text><url>https://www.drweeclinic.com/</url></link></condition>
+        <condition name = "fstates" value = "Kelantan"><link><text>Kelantan Clinic</text><url>https://marissaskin.my//</url></link></condition>
+        <condition name = "fstates" value = "Perlis"><link><text>Perlis Clinic</text><url>https://my294392-klinik-chiang.contact.page/contact-us</url></link></condition>
+        <condition name = "fstates" value = "Melaka"><link><text>Melaka Clinic</text><url>http://www.yapsclinic.com/</url></link></condition>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Which state are you currently living in</that>
+        <template>State Not Found.</template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Which type of disease do you want to know</that>
+        <template>Do you want to try symptoms since disease is not found</template>
+    </category>
+    
+    <category>
+        <pattern>YES</pattern>
+        <that>Do you want to try symptoms since disease is not found</that>
+        <template>What is your symptom?</template>
+    </category>
+    
+     <category>
+        <pattern>NO</pattern>
+        <that>Do you want to try symptoms since disease is not found</that>
+        <template>Alright then.</template>
+    </category>
+    
+     <category>
+        <pattern>*</pattern>
+        <that>Do you want to try symptoms since disease is not found</that>
+        <template>Would you like to try by using symptoms since disease is not found</template>
+    </category>
+    
+    <category>
+        <pattern>YES</pattern>
+        <that>Would you like to try by using symptoms since disease is not found</that>
+        <template>What is your symptom?</template>
+    </category>
+    
+    <category>
+        <pattern>NO</pattern>
+        <that>Would you like to try by using symptoms since disease is not found</that>
+        <template>Alright then.</template>
+    </category>
+    
+    <category>
+        <pattern><set>symptom</set></pattern>
+        <that>What is your symptom</that>
+        <template>
+        <think><set name = "fsymptoms"><star/></set></think>
+        <set name = "fdisease"><map name = "facialsymptoms"><get name = "fsymptoms"/></map></set>
+        
+        <condition name = "fdisease" value = "Rosacea"><image>https://findadermatologist.com/wp-content/uploads/2014/10/Rosacea-Type-1-redness.jpg</image></condition>
+        <condition name = "fdisease" value = "Blushing"><image>https://media.self.com/photos/5ad7a6c05996d57eda91cc02/3:4/w_810,h_1080,c_limit/lex.jpg</image></condition>
+        <condition name = "fdisease" value = "Rhinophyma"><image>https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/05/ds00308_im00816_sn7_rhinophymathu_jpg.jpg</image></condition>
+        <condition name = "fdisease" value = "Blepharophyma"><image>https://o.quizlet.com/V-nIKcH0tXx5B4XLzvKrGg.jpg</image></condition>
+        <condition name = "fdisease" value = "Aging Skin"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/03/ch709.fig1_-564x848.jpg</image></condition>
+        <condition name = "fdisease" value = "Actinic Keratoses"><image>https://www.dermcoll.edu.au/wp-content/uploads/2014/09/Actinic-keratoses-1_michelle-hunt.jpeg</image></condition>
+        <condition name = "fdisease" value = "Basal Cell Carcinoma"><image>https://theskindoctor.melbourne/wp-content/uploads/2021/05/skin-doctor-basal-cell-carcinoma.jpg</image></condition>
+        <condition name = "fdisease" value = "Lentigines"><image>https://ykhoa.org/d/images/DERM/81287_Solar_lentigines_face.jpg</image></condition>
+        <condition name = "fdisease" value = "Flat seborrheic keratoses"><image>https://i.pinimg.com/originals/1a/f3/08/1af308a0a7ff4a56c31126b2c38ae5d6.jpg</image></condition>
+        <condition name = "fdisease" value = "Cherry Angiomas"><image>https://sa1s3optim.patientpop.com/assets/images/provider/photos/2236943.jpg</image></condition>
+        <condition name = "fdisease" value = "Sebaceous hyperplasia"><image>https://healthjade.net/wp-content/uploads/2019/07/sebaceous-hyperplasia.jpg</image></condition>
+        <condition name = "fdisease" value = "Senile Purpura"><image>https://casereports.bmj.com/content/bmjcr/14/2/e241456/F1.large.jpg</image></condition>
+        <condition name = "fdisease" value = "Comedonal Acne"><image>https://parade.com/wp-content/uploads/2021/03/best-blackhead-popping-videos.jpg</image></condition>
+        <condition name = "fdisease" value = "Papules"><image>https://cdn.mdedge.com/files/s3fs-public/Gupta_Quiz.JPG</image></condition>
+        <condition name = "fdisease" value = "Putsules"><image>https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325342/pustules.jpg</image></condition>
+        <condition name = "fdisease" value = "Nodulocystic Acne"><image>https://media.sciencephoto.com/c0/38/44/89/c0384489-800px-wm.jpg</image></condition>
+        <condition name = "fdisease" value = "Acne Vulgaris"><image>https://kblimskinclinic.com/wp-content/uploads/2020/12/acne-pustulesandpapules-796x1024.jpg</image></condition>
+        <condition name = "fdisease" value = "Ice Pick"><image>https://sozoclinic.sg/wp-content/uploads/Ice-Pick-Scar-Treatments-Singapore-1112x650.jpg</image></condition>
+        <condition name = "fdisease" value = "Boxcar Scars"><image>https://acne-scar-treatment.com/wp-content/uploads/2020/01/treating-acne-scars-in-dark-skin-types.jpg</image></condition>
+        <condition name = "fdisease" value = "Atrophic Scars"><image>https://www.olivaclinic.com/wp-content/uploads/2020/08/800x400.jpg</image></condition>
+        <condition name = "fdisease" value = "Hypertrophic Scars"><image>https://www.revival.com.my/image/scar.jpg</image></condition>
+        <condition name = "fdisease" value = "Postinflammatory Hypopigmentation"><image>https://www.dermatologyadvisor.com/wp-content/uploads/sites/20/2019/01/ca092018dermclinicscase2_1487802-860x509.jpg</image></condition>
+        <condition name = "fdisease" value = "Postinflammatory Pigmentation"><image>https://images-1.eucerin.com/~/media/eucerin/international/about-skin/indications/postinflammatory-hyperpigmentation/pih-update2018/euc-int_about-skin_pih_01.jpg</image></condition>
+        <condition name = "fdisease" value = "Postinflammatory Erythema"><image>https://static.acne.org/ipb_uploads/monthly_2017_01/20170125_204152.jpg.98fe30c2bf8b3d281a1f5ae52baf0ef0.jpg</image></condition>
+        <condition name = "fdisease" value = "Cystic Acne"><image>https://www.thesun.co.uk/wp-content/uploads/2020/08/NINTCHDBPICT000603226847.jpg</image></condition>
+        <condition name = "fdisease" value = "Adult Acne"><image>https://www.theskincareclinic.com.au/wp-content/uploads/2019/06/enlarged-pores-tips-1200px-wide-1024x459.jpg</image></condition>
+        Do you want to know the treatment?
+        <button>
+            <text>Treatment</text>
+            <postback>FACIALTREATMENT</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>What is your symptom</that>
+        <template>Disease Not Found.</template>
+    </category>
+    
+    <category>
+        <pattern>FACIALTREATMENT</pattern>
+        <template>
+        <br/>Treatment:<br/><get name = "fdisease"/>:<map name = "facialtreatment"><get name = "fdisease"/></map><br/>
+        <br/> Do you want to know the function of the treatment?
+        <button>
+            <text>Function of Treatment</text>
+            <postback>FTREATMENTFUNCTION</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>FTREATMENTFUNCTION</pattern>
+        <template>
+        <br/>Function of Treatment:<br/><get name = "fdisease"/>:<map name = "facialtreatfunction"><get name = "fdisease"/></map><br/>
+        <br/> Do you want to visit the dermatologist?
+        <button>
+            <text>Dermatology Clinic</text>
+            <postback>DERMA</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>I want to know the causes</pattern>
+        <template>The causes could be:
+            <ol>
+                <li>Environmental Factors such as smoking and sun exposure</li>
+                <li>Dietary Factors such as carbohydrates and spicy food</li>
+                <li>Genetic factors</li>
+            </ol>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>HOW CAN I PREVENT ACNE</pattern>
+        <template>
+            Here are some acne preventation tips you can implement in your daily life 
+            <ol>
+                <li>Washing face twice a day</li>
+                <li>Avoid makeup that contains oil</li>
+                <li>Eating a healthy diet</li>
+                <li>Showering after exercise</li>
+            </ol>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>HOW TO PREVENT ACNE</pattern>
+        <template>
+            Here are some acne preventation tips you can implement in your daily life 
+            <ol>
+                <li>Washing face twice a day</li>
+                <li>Avoid makeup that contains oil</li>
+                <li>Eating a healthy diet</li>
+                <li>Showering after exercise</li>
+            </ol>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>ACNE PREVENTION</pattern>
+        <template>
+            Here are some acne preventation tips you can implement in your daily life 
+            <ol>
+                <li>Washing face twice a day</li>
+                <li>Avoid makeup that contains oil</li>
+                <li>Eating a healthy diet</li>
+                <li>Showering after exercise</li>
+            </ol>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>WHAT CAUSES AGING SKIN</pattern>
+        <template>
+            The causes of Aging Skin:
+            <ol>
+                <li>Old age</li>
+                <li>Menopause since it decreases the protective effects of oestrogen</li>
+                <li>Environmental Factors such as smoking and sun exposure</li>
+            </ol>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>WHAT CAUSES BLUSHING</pattern>
+        <template>Blushing is caused by body respond to sympathetic nervous system.</template>
+    </category>
+    
+    <category>
+        <pattern>WHAT CAUSES BLEPHAROPHYMA</pattern>
+        <template>Blepharophyma is caused by Sebaceous gland hyperplasia.</template>
+    </category>
+    
+    <category>
+        <pattern>WHAT CAUSES ACNE VULGARIS</pattern>
+        <template>
+            The causes of Acne Vulgaris:
+            <ol>
+                <li>Cosmetics or hair-care products</li>
+                <li>High humidity and sweating</li>
+            </ol>
+        </template>
+    </category>
+  
+  <category>
+      <pattern>WHAT CAUSES PUTSULES</pattern>
+      <template>Putsules is caused by blockage of dead cell skins</template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES PAPULES</pattern>
+      <template>
+          The causes of Papules:
+          <ol>
+              <li>Bacteria</li>
+              <li>Skin cells clogging a pore</li>
+              <li>Excess oil</li>
+          </ol>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES COMEDONAL ACNE</pattern>
+      <template>
+          The causes of Comedonal Acne:
+          <ol>
+              <li>Open comedons</li>
+              <li>Closed comedons</li>
+              <li>Increased sebum production</li>
+          </ol>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES ACNE</pattern>
+      <template>
+          The causes of Acne:
+          <ol>
+              <li>Genetic Factors</li>
+              <li>Dietary Factors such as carbohydrates and spicy food</li>
+              <li>Some nedications</li>
+              <li>Something rubbing on skin</li>
+          </ol>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES ACNE SCARRING</pattern>
+      <template>Acne scars are usually the result of inflamed blemishes caused by skin pores engorged with excess oil, dead skin cells and bacteria.</template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES ACTINIC KERATOSES</pattern>
+      <template>Actinic Keratoses is caused by DNA damage by short wavelength UVB</template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES CHERRY ANGIOMAS</pattern>
+      <template>Cherry Angiomas is caused by proliferating endothelial cells</template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES SEBACEOUS HYPERPLASIA</pattern>
+      <br/><template>Sebaceous hyperplasia is caused by Form of benign hair follicile tumour<br/>
+      <br/> Do you want to know who it happens to?
+      <button>
+          <text>Happens to</text>
+          <postback>SEBACEOUSHAPPENS</postback>
+      </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>SEBACEOUSHAPPENS</pattern>
+      <template>Sebaceous hyperplasia usually happens to patient organ transplantation</template>
+  </category>
+  
+  <category>
+      <pattern>WHAT CAUSES SENILE PURPURA</pattern>
+      <template>Senile Purpura is caused by red blood cells leaving blood vessels</template>
+  </category>
+  
+  <category>
+      <pattern>WHERE DOES IT APPEARS ON</pattern>
+      <template>
+          It usually appears on:
+          <ol>
+              <li>Cheek</li>
+              <li>Chin</li>
+              <li>Forehead</li>
+          </ol>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>THANK YOU</pattern>
+      <template>Your most welcome. Glad I could help.</template>
+  </category>
+  
+  <category>
+      <pattern>*</pattern>
+      <template>Sorry I am incapable to understand that.</template>
+  </category>
+
+  
+
+
+</aiml>

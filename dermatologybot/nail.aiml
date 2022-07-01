@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- insert your AIML categories here -->
+	<category>
+        <pattern>NAIL</pattern>
+        <template>
+            Do you know what nail disease you have?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>yes</pattern>
+        <that>Do you know what nail disease you have</that>
+        <template><srai>DISEASE</srai></template>
+    </category>
+    
+    <category>
+        <pattern>no</pattern>
+        <that>Do you know what nail disease you have</that>
+        <template><srai>UNKNOWN</srai></template>
+    </category>
+    
+    <!--know what disease-->
+    <category>
+        <pattern>DISEASE</pattern>
+        <template>
+            What disease you wish to know about?
+        </template>
+    </category>
+    
+    
+    <category>
+        <pattern><set>naildisease</set></pattern>
+        <that>What disease you wish to know about</that>
+        <template>
+            <think><set name = "disease"><star/></set></think>
+            
+            <br/>Symptoms:
+            <br/><map name = "naildiseasetosymptom"><get name = "disease"/></map><br/>
+            <br/>Treatment:
+            <br/><map name = "naildiseasetotreatment"><get name = "disease"/></map><br/>
+            <br/>Cause:
+            <br/><map name = "naildiseasetocause"><get name = "disease"/></map><br/>
+            <br/>Prevention:
+            <br/><map name = "naildiseasetoprevention"><get name = "disease"/></map><br/>
+            <br/>
+            
+            <condition name = "disease" value = "Leukonychia"><image>https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/leukonychia-or-white-spot.jpg</image></condition>
+            <condition name = "disease" value = "Onychotillomania"><image>https://ijdvl.com/content/126/2017/83/1/Images/ijdvl_2017_83_1_19_184202_f7.jpg</image></condition>
+            <!--minght have problem-->
+            <condition name = "disease" value = "Muehrcke's Lines"><image>https://upload.wikimedia.org/wikipedia/commons/9/90/Muehrcke%27s_lines.JPG</image></condition>
+            <condition name = "disease" value = "Terry’s nails"><image>https://litfl.com/wp-content/uploads/2020/05/Terrys-nails-2011-Nia.png</image></condition>
+            <condition name = "disease" value = "Ingrown Nails">
+                <image>https://thenailtechdiaries.com/wp-content/uploads/2020/09/ingrown-1024x576.jpg.webp</image>
+                Do you want to see how to cut the ingrown nails by yourself?
+                <button>
+                    <text>Show how to cut ingrown nails</text>
+                    <postback>INHOW</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Paronychia"><image>https://my.clevelandclinic.org/-/scassets/images/org/health/articles/15327-nail-infection.ashx</image></condition>
+            <condition name = "disease" value = "Koilonychia"><image>https://medicalfoster.com/wp-content/uploads/2016/12/koilonychia-photo.jpg</image></condition>
+            <condition name = "disease" value = "Brittle Splitting Nails"><image>https://img.emedihealth.com/wp-content/uploads/2021/02/brittle-nails-feat-1.jpg</image></condition>
+            <condition name = "disease" value = "Nail fungal infections">
+                <image>https://www.cdc.gov/fungal/images/nail-fungus-600px.jpg</image>
+                Do you want to know about oral medication for antifungal?
+                <button>
+                    <text>Oral medication for antifungal</text>
+                    <postback>NFIMED</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Yellow nail syndrome"><image>http://www.huidziekten.nl/afbeeldingen/nagelafwijkingen/yellow-nail-syndroom-3.jpg</image></condition>
+            <condition name = "disease" value = "Nail psoriasis"><image>https://imagesvc.meredithcorp.io/v3/mm/image?url=https:%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F12%2F2018%2F11%2Fnail-pitting-psoriasis.jpeg</image></condition>
+            <condition name = "disease" value = "Onycholysis"><image>https://dermnetnz.org/assets/Uploads/hair-nails-sweat/olysis1__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDFd.jpg</image></condition>
+            <condition name = "disease" value = "Pitting"><image>https://clf1.medpagetoday.com/assets/images/resource-center/VisualDx_Psoriasis.jpg</image></condition>
+            <condition name = "disease" value = "blue nails"><image>https://149364273.v2.pressablecdn.com/wp-content/uploads/2020/01/fingernails-7.jpg</image></condition>
+            <condition name = "disease" value = "white nails"><image>https://litfl.com/wp-content/uploads/2020/05/Terry-nails-IndianJNephrol-2015.jpg</image></condition>
+            <condition name = "disease" value = "pale nails"><image>https://static.wixstatic.com/media/1f103a_d3dffa93a5524492b782394c5eb24044~mv2.jpg/v1/fill/w_1000,h_575,al_c,q_90,usm_0.66_1.00_0.01/1f103a_d3dffa93a5524492b782394c5eb24044~mv2.jpg</image></condition>
+            <condition name = "disease" value = "half pink half white nails"><image>https://www.disabled-world.com/pics/1/healthy-fingernail.jpg</image></condition>
+            <condition name = "disease" value = "blue half-moons nails"><image>https://live.staticflickr.com/65535/49207057293_755c964894.jpg</image></condition>
+            <condition name = "disease" value = "dusky red half-moons nails"><image>https://litfl.com/wp-content/uploads/2020/01/red-lunula-Lupus-1999.jpeg</image></condition>
+            <condition name = "disease" value = "Mees’ lines"><image>https://upload.wikimedia.org/wikipedia/commons/9/90/Muehrcke%27s_lines.JPG</image></condition>
+            <condition name = "disease" value = "Beau lines"><image>https://i.pinimg.com/474x/1b/47/f7/1b47f7e1913fb0b8e7cc3e3cf5c4607f--beaus-lines-nail-pro.jpg</image></condition>
+            <condition name = "disease" value = "Green nail syndrome"><image>https://images.ctfassets.net/1ny4yoiyrqia/6gLh6nX0UVvSNuVXW32qP0/a373237799d911eee44ba049c83bb172/green-nail-DermNetNZ.jpg</image></condition>
+            <condition name = "disease" value = "Onychogryphosis">
+                <image>https://images-prod.healthline.com/hlcmsresource/images/Image-Galleries/Onychogryphosis/3051-moderate_Onychogrphosis-648x364-slide1.jpg</image>
+                Do you want to see how to cut Ram's Horn nails by yourself?
+                <button>
+                    <text>Show how to cut Ram's Horn nails</text>
+                    <postback>RHNTUTORIAL</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Ram’s horn nails">
+                <image>https://images-prod.healthline.com/hlcmsresource/images/Image-Galleries/Onychogryphosis/3051-moderate_Onychogrphosis-648x364-slide1.jpg</image>
+                Do you want to see how to cut Ram's Horn nails by yourself?
+                <button>
+                    <text>Show how to cut Ram's Horn nails</text>
+                    <postback>RHNTUTORIAL</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Clubbing"><image>https://upload.wikimedia.org/wikipedia/commons/b/bb/Dedos_con_acropaquia.jpg</image></condition>
+            
+        </template>
+    </category>
+    
+    
+    <category>
+        <pattern>*</pattern>
+        <that>What disease you wish to know about</that>
+        <template>
+            I DO NOT KNOW ABOUT THIS DISEASE. Try other names or change to search by symptom.
+            <button>
+                <text>Search by symptoms</text>
+                <postback>UNKNOWN</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--dont know what disease-->
+    <category>
+        <pattern>UNKNOWN</pattern>
+        <template>What is your symptom?</template>
+    </category>
+    
+    
+    <!--normal one to one/ many to one disease-->
+    <category>
+        <pattern><set>nailsymptom</set></pattern>
+        <that>What is your symptom</that>
+        <template>
+        <think><set name = "symptoms"><star/></set></think>
+        You might having :
+        <set name = "disease"><map name = "nailsymptomtodisease"><get name = "symptoms"/></map></set>
+        
+        <condition name = "disease" value = "Leukonychia"><image>https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/leukonychia-or-white-spot.jpg</image></condition>
+        <condition name = "disease" value = "Onychotillomania"><image>https://ijdvl.com/content/126/2017/83/1/Images/ijdvl_2017_83_1_19_184202_f7.jpg</image></condition>
+        <!--minght have problem-->
+        <condition name = "disease" value = "Muehrcke's Lines"><image>https://upload.wikimedia.org/wikipedia/commons/9/90/Muehrcke%27s_lines.JPG</image></condition>
+        <condition name = "disease" value = "Terry’s nails"><image>https://litfl.com/wp-content/uploads/2020/05/Terrys-nails-2011-Nia.png</image></condition>
+        <condition name = "disease" value = "Ingrown Nails"><image>https://thenailtechdiaries.com/wp-content/uploads/2020/09/ingrown-1024x576.jpg.webp</image></condition>
+        <condition name = "disease" value = "Paronychia"><image>https://my.clevelandclinic.org/-/scassets/images/org/health/articles/15327-nail-infection.ashx</image></condition>
+        <condition name = "disease" value = "Koilonychia"><image>https://medicalfoster.com/wp-content/uploads/2016/12/koilonychia-photo.jpg</image></condition>
+        <condition name = "disease" value = "Brittle Splitting Nails"><image>https://img.emedihealth.com/wp-content/uploads/2021/02/brittle-nails-feat-1.jpg</image></condition>
+        <condition name = "disease" value = "Nail fungal infections"><image>https://www.cdc.gov/fungal/images/nail-fungus-600px.jpg</image></condition>
+        <condition name = "disease" value = "Yellow nail syndrome"><image>http://www.huidziekten.nl/afbeeldingen/nagelafwijkingen/yellow-nail-syndroom-3.jpg</image></condition>
+        <condition name = "disease" value = "Nail psoriasis"><image>https://imagesvc.meredithcorp.io/v3/mm/image?url=https:%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F12%2F2018%2F11%2Fnail-pitting-psoriasis.jpeg</image></condition>
+        <condition name = "disease" value = "Onycholysis"><image>https://dermnetnz.org/assets/Uploads/hair-nails-sweat/olysis1__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDFd.jpg</image></condition>
+        <condition name = "disease" value = "Pitting"><image>https://clf1.medpagetoday.com/assets/images/resource-center/VisualDx_Psoriasis.jpg</image></condition>
+        <condition name = "disease" value = "blue nails"><image>https://149364273.v2.pressablecdn.com/wp-content/uploads/2020/01/fingernails-7.jpg</image></condition>
+        <condition name = "disease" value = "white nails"><image>https://litfl.com/wp-content/uploads/2020/05/Terry-nails-IndianJNephrol-2015.jpg</image></condition>
+        <condition name = "disease" value = "pale nails"><image>https://static.wixstatic.com/media/1f103a_d3dffa93a5524492b782394c5eb24044~mv2.jpg/v1/fill/w_1000,h_575,al_c,q_90,usm_0.66_1.00_0.01/1f103a_d3dffa93a5524492b782394c5eb24044~mv2.jpg</image></condition>
+        <condition name = "disease" value = "half pink half white nails"><image>https://www.disabled-world.com/pics/1/healthy-fingernail.jpg</image></condition>
+        <condition name = "disease" value = "blue half-moons nails"><image>https://live.staticflickr.com/65535/49207057293_755c964894.jpg</image></condition>
+        <condition name = "disease" value = "dusky red half-moons nails"><image>https://litfl.com/wp-content/uploads/2020/01/red-lunula-Lupus-1999.jpeg</image></condition>
+        <condition name = "disease" value = "Mees’ lines"><image>https://upload.wikimedia.org/wikipedia/commons/9/90/Muehrcke%27s_lines.JPG</image></condition>
+        <condition name = "disease" value = "Beau lines"><image>https://i.pinimg.com/474x/1b/47/f7/1b47f7e1913fb0b8e7cc3e3cf5c4607f--beaus-lines-nail-pro.jpg</image></condition>
+        <condition name = "disease" value = "Green nail syndrome"><image>https://images.ctfassets.net/1ny4yoiyrqia/6gLh6nX0UVvSNuVXW32qP0/a373237799d911eee44ba049c83bb172/green-nail-DermNetNZ.jpg</image></condition>
+        <condition name = "disease" value = "Onychogryphosis"><image>https://images-prod.healthline.com/hlcmsresource/images/Image-Galleries/Onychogryphosis/3051-moderate_Onychogrphosis-648x364-slide1.jpg</image></condition>
+        <condition name = "disease" value = "Ram’s horn nails"><image>https://images-prod.healthline.com/hlcmsresource/images/Image-Galleries/Onychogryphosis/3051-moderate_Onychogrphosis-648x364-slide1.jpg</image></condition>
+        <condition name = "disease" value = "Clubbing"><image>https://upload.wikimedia.org/wikipedia/commons/b/bb/Dedos_con_acropaquia.jpg</image></condition>
+        <condition name = "disease" value = "Acral lentiginous melanoma"><image>https://www.naildesignideaz.com/wp-content/uploads/2017/04/acral-lentiginous-melanoma.jpg</image></condition>
+        
+        <button>
+            <text>LearnMore</text>
+            <postback>LEARNMORE</postback>
+        </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>What is your symptom</that>
+        <template>
+            Sorry, I don't recognise any disease with this symptom. Try to change a keyword or search by disease name.
+            <button>
+                <text>Search by disease name</text>
+                <postback>DISEASE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--
+    <category>
+        <pattern>QUESTIONLEARNMORE</pattern>
+        <template>Do you want to know more about it?</template>
+    </category>
+    
+    <category>
+        <pattern>yes</pattern>
+        <that>Do you want to know more about it</that>
+        <template>
+            <br/>Symptoms:
+            <br/><map name = "naildiseasetosymptom"><get name = "disease"/></map><br/>
+            <br/>Treatment:
+            <br/><map name = "naildiseasetotreatment"><get name = "disease"/></map><br/>
+            <br/>Causes:
+            <br/><map name = "naildiseasetocause"><get name = "disease"/></map><br/>
+            <br/>Prevention:
+            <br/><map name = "naildiseasetoprevention"><get name = "disease"/></map><br/>
+        </template>
+    </category>
+    -->
+    
+    
+    <!-- LEARN MORE-->
+    <category>
+        <pattern>LEARNMORE</pattern>
+        <template>
+            <br/>Symptoms:
+            <br/><map name = "naildiseasetosymptom"><get name = "disease"/></map><br/>
+            <br/>Treatment:
+            <br/><map name = "naildiseasetotreatment"><get name = "disease"/></map><br/>
+            <br/>Causes:
+            <br/><map name = "naildiseasetocause"><get name = "disease"/></map><br/>
+            <br/>Prevention:
+            <br/><map name = "naildiseasetoprevention"><get name = "disease"/></map><br/>
+            <br/>
+            <condition name = "disease" value = "Ingrown Nails">
+                Do you want to see how to cut the ingrown nails by yourself?
+                <button>
+                    <text>Show how to cut ingrown nails</text>
+                    <postback>INHOW</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Nail fungal infections">
+                Do you want to know about oral medication for antifungal?
+                <button>
+                    <text>Oral medication for antifungal</text>
+                    <postback>NFIMED</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Onychogryphosis">
+                Do you want to see how to cut Ram's Horn nails by yourself?
+                <button>
+                    <text>Show how to cut Ram's Horn nails</text>
+                    <postback>RHNTUTORIAL</postback>
+                </button>
+            </condition>
+            <condition name = "disease" value = "Ram’s horn nails">
+                Do you want to see how to cut Ram's Horn nails by yourself?
+                <button>
+                    <text>Show how to cut Ram's Horn nails</text>
+                    <postback>RHNTUTORIAL</postback>
+                </button>
+            </condition>
+        </template>
+    </category>
+    
+    <!--swell: paronychia, ingrown nails-->
+    <category>
+        <pattern>swell</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Ingrown Nails or Paronychia. Do you have other symptoms?
+            <button>
+                <text>Yes</text>
+                <postback>SWELLYES</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>SWELLNO</postback>
+            </button>
+            <button>
+                <text>It is definitely not these two disease.</text>
+                <postback>SWELLEXIT</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--if no symptom other than swell-->
+    <category>
+        <pattern>SWELLNO</pattern>
+        <template>
+            Your disease might be Paronychia or Ingrown Nails.<br/>
+            <br/>
+            Paronychia looks like this:<br/>
+            <image>https://my.clevelandclinic.org/-/scassets/images/org/health/articles/15327-nail-infection.ashx</image>
+            Ingrown nails looks like this:<br/>
+            <image>https://thenailtechdiaries.com/wp-content/uploads/2020/09/ingrown-1024x576.jpg.webp</image>
+        </template>
+    </category>
+    
+    <!--definitely not these two disease-->
+    <category>
+        <pattern>SWELLEXIT</pattern>
+        <template>
+            Sorry that I can't help you.<br/>
+            <br/>
+            <srai>NAIL</srai>
+        </template>
+    </category>
+    
+    <!--if have symptom other than swell-->
+    <category>
+        <pattern>SWELLYES</pattern>
+        <template>What is your other symptoms?</template>
+    </category>
+    
+    <category>
+        <pattern>yellow pus</pattern>
+        <that>What is your other symptoms</that>
+        <template>
+            <image>https://my.clevelandclinic.org/-/scassets/images/org/health/articles/15327-nail-infection.ashx</image>
+            It is Paronychia. Paronychia symptoms are swell/redness, yellow pus, fever and gland pain.
+            <button>
+                <text>LearnMore</text>
+                <postback>PAROYES</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>fever</pattern>
+        <that>What is your other symptoms</that>
+        <template>
+            <image>https://my.clevelandclinic.org/-/scassets/images/org/health/articles/15327-nail-infection.ashx</image>
+            It is Paronychia. Paronychia symptoms are swell/redness, yellow pus, fever and gland pain.
+            <button>
+                <text>LearnMore</text>
+                <postback>PAROYES</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>bleed</pattern>
+        <that>What is your other symptoms</that>
+        <template>
+            <image>https://thenailtechdiaries.com/wp-content/uploads/2020/09/ingrown-1024x576.jpg.webp</image>
+            It is Ingrown Nails. Ingrown nails symptoms are swell and bleed.
+            <button>
+                <text>LearnMore</text>
+                <postback>INYES</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--Learn more about paronycia-->
+    <category>
+        <pattern>PAROYES</pattern>
+        <template>
+            <br/>Symptoms:
+            <br/><map name = "naildiseasetosymptom">Paronychia</map><br/>
+            <br/>Treatment:
+            <br/><map name = "naildiseasetotreatment">Paronychia</map><br/>
+            <br/>Cause:
+            <br/><map name = "naildiseasetocause">Paronychia</map><br/>
+            <br/>Prevention:
+            <br/><map name = "naildiseasetoprevention">Paronychia</map><br/>
+        </template>
+    </category>
+    
+    <!--Learn more about ingrown nails-->
+    <category>
+        <pattern>INYES</pattern>
+        <template>
+            <br/>Symptoms:
+            <br/><map name = "naildiseasetosymptom">Ingrown Nails</map><br/>
+            <br/>Treatment:
+            <br/><map name = "naildiseasetotreatment">Ingrown Nails</map><br/>
+            <br/>Cause:
+            <br/><map name = "naildiseasetocause">Ingrown Nails</map><br/>
+            <br/>Prevention:
+            <br/><map name = "naildiseasetoprevention">Ingrown Nails</map><br/>
+            <br/>
+            Do you want to see how to cut the ingrown nails by yourself?
+            <button>
+                <text>Show how to cut ingrown nails</text>
+                <postback>INHOW</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>INHOW</pattern>
+        <template>
+            Tutorial Link:<br/>
+            <link>
+                <text>EASY DIY AT HOME TREATMENT FOR INGROWN TOENAILS USING INGROWN TOENAIL TOOL</text>
+                <url>https://youtu.be/TFuRDmQ0qv8</url>
+            </link>
+            
+            <br/>Tool purchase link:<br/>
+            <link>
+                <text>Ingrown Nail Tools</text>
+                <url>https://www.lazada.com.my/products/12pcs-ingrown-toenail-tool-stainless-steel-ingrown-toenail-treatment-pedicure-tools-i1991512285.html</url>
+            </link>
+            
+            <br/>However, it's recommended to go to specialist for the first time.
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>What is your other symptoms</that>
+        <template>
+            Sorry, both of the diseases do not have this symptom. Your disease might be Paronychia or Ingrown Nails.<br/>
+            <br/>
+            Paronychia looks like this:<br/>
+            <image>https://my.clevelandclinic.org/-/scassets/images/org/health/articles/15327-nail-infection.ashx</image>
+            Ingrown nails looks like this:<br/>
+            <image>https://thenailtechdiaries.com/wp-content/uploads/2020/09/ingrown-1024x576.jpg.webp</image>
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+    
+    <!--nails break easily: Brittle splitting nails, Nail fungal infections-->
+    <category>
+        <pattern>nails break easily</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Brittle splitting nails or Nail fungal infections. Is your nails colour changed or thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>BSN</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>nail break easily</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Brittle splitting nails or Nail fungal infections. Is your nails colour changed or thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>BSN</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>nail breaks easily</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Brittle splitting nails or Nail fungal infections. Is your nails colour changed or thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>BSN</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <!--
+        <pattern>no</pattern>
+        <that>Is your nails colour changed or thicken</that>
+        -->
+        <pattern>BSN</pattern>
+        <template>
+            <think><set name = "disease">Brittle splitting nails</set></think>
+            It's Brittle splitting nails.<br/>
+            <image>https://img.emedihealth.com/wp-content/uploads/2021/02/brittle-nails-feat-1.jpg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <!--
+        <pattern>yes</pattern>
+        <that>Is your nails colour changed or thicken</that>
+        -->
+        <pattern>NFI</pattern>
+        <template>
+            <think><set name = "disease">Nail fungal infections</set></think>
+            It's Nail fungal infections.<br/>
+            <image>https://www.cdc.gov/fungal/images/nail-fungus-600px.jpg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+    
+    <!--thicken: Nail fungal infections, Yellow nail syndrome, Onychogryphosis(Ram’s horn nails)-->
+    <category>
+        <pattern>thicken</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Onychogryphosis(Ram’s horn nails).<br/>
+            <br/>Are your nails overgrow?
+            
+            <button>
+                <text>Yes</text>
+                <postback>RHN</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>NFIYNS</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>RHN</pattern>
+        <template>
+            <think><set name = "disease">Onychogryphosis</set></think>
+            It's Onychogryphosis(Ram’s horn nails).<br/>
+            <image>https://images-prod.healthline.com/hlcmsresource/images/Image-Galleries/Onychogryphosis/3051-moderate_Onychogrphosis-648x364-slide1.jpg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>NFIYNS</pattern>
+        <template>
+            Is your nail stop growing?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>yes</pattern>
+        <that>Is your nail stop growing</that>
+        <template>
+            <think><set name = "disease">Yellow nail syndrome</set></think>
+            It's Yellow nail syndrome.<br/>
+            <image>http://www.huidziekten.nl/afbeeldingen/nagelafwijkingen/yellow-nail-syndroom-3.jpg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>no</pattern>
+        <that>Is your nail stop growing</that>
+        <template>
+            <srai>NFI</srai>
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+    
+    <!--yellow/brown nails: Nail fungal infections, Yellow nail syndrome, Nail psoriasis-->
+    <category>
+        <pattern>yellow</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Nail psoriasis.<br/>
+            Is your nail thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>YNSORNP</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>yellow nail</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Nail psoriasis.<br/>
+            Is your nail thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>YNSORNP</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>yellow nails</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Nail psoriasis.<br/>
+            Is your nail thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>YNSORNP</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>brown</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Nail psoriasis.<br/>
+            Is your nail thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>YNSORNP</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>brown nail</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Nail psoriasis.<br/>
+            Is your nail thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>YNSORNP</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>brown nails</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail fungal infections, Yellow nail syndrome, or Nail psoriasis.<br/>
+            Is your nail thicken?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NFI</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>YNSORNP</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>YNSORNP</pattern>
+        <template>
+            Is your nail crumbling?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>yes</pattern>
+        <that>Is your nail crumbling</that>
+        <template>
+            <think><set name = "disease">Nail psoriasis</set></think>
+            It's Nail psoriasis.<br/>
+            <image>https://imagesvc.meredithcorp.io/v3/mm/image?url=https:%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F12%2F2018%2F11%2Fnail-pitting-psoriasis.jpeg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>no</pattern>
+        <that>Is your nail crumbling</that>
+        <template>
+            <think><set name = "disease">Yellow nail syndrome</set></think>
+            It's Yellow nail syndrome.<br/>
+            <image>http://www.huidziekten.nl/afbeeldingen/nagelafwijkingen/yellow-nail-syndroom-3.jpg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+    
+    <!--Nail lifting up / seperation of nail from nail bed: Nail psoriasis, Onycholysis-->
+    <category>
+        <pattern>Nail lifting up</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail psoriasis or Onycholysis.<br/>
+            Are your nails yellow or brown?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NP</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>ONY</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Nails lifting up</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail psoriasis or Onycholysis.<br/>
+            Are your nails yellow or brown?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NP</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>ONY</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Nail lift up</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail psoriasis or Onycholysis.<br/>
+            Are your nails yellow or brown?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NP</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>ONY</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Nail lifts up</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail psoriasis or Onycholysis.<br/>
+            Are your nails yellow or brown?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NP</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>ONY</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Nails lift up</pattern>
+        <that>What is your symptom</that>
+        <template>
+            It might be Nail psoriasis or Onycholysis.<br/>
+            Are your nails yellow or brown?
+            
+            <button>
+                <text>Yes</text>
+                <postback>NP</postback>
+            </button>
+            <button>
+                <text>No</text>
+                <postback>ONY</postback>
+            </button>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>NP</pattern>
+        <template>
+            <think><set name = "disease">Nail psoriasis</set></think>
+            It's Nail psoriasis.<br/>
+            <image>https://imagesvc.meredithcorp.io/v3/mm/image?url=https:%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F12%2F2018%2F11%2Fnail-pitting-psoriasis.jpeg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>ONY</pattern>
+        <template>
+            <think><set name = "disease">Onycholysis</set></think>
+            It's Onycholysis.<br/>
+            <image>https://dermnetnz.org/assets/Uploads/hair-nails-sweat/olysis1__ProtectWyJQcm90ZWN0Il0_FocusFillWzI5NCwyMjIsIngiLDFd.jpg</image>
+            <button>
+                <text>LearnMore</text>
+                <postback>LEARNMORE</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+    
+    <!--oral medication for antifungal-->
+    <category>
+        <pattern>NFIMED</pattern>
+        <template>
+            There are four types of oral medication you can take. Click to show details if you are interested.
+            <button>
+                <text>1. Fluconazole (Diflucan)</text>
+                <postback>DIFLUCAN</postback>
+            </button>
+            <button>
+                <text>2. Itraconazole (Sporanox)</text>
+                <postback>SPORANOX</postback>
+            </button>
+            <button>
+                <text>3. Terbinafine (Lasimi)</text>
+                <postback>LASIMI</postback>
+            </button>
+            <button>
+                <text>4. griseofulvin (Gris-PEG)</text>
+                <postback>PEG</postback>
+            </button>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>DIFLUCAN</pattern>
+        <template>
+            Details:<br/>
+            <link>
+                <text>Details for Fluconazole (Diflucan)</text>
+                <url>https://www.nhs.uk/medicines/fluconazole/</url>
+            </link>
+            <br/>
+            People who cannot take fluconazole (Diflucan) without professional advice:<br/>
+            1. heart disease, including heart rhythm problems (arrhythmia)<br/>
+            2. had an allergic reaction to fluconazole or any other medicines in the past<br/>
+            3. kidney or liver problems<br/>
+            4. a rare, inherited blood disorder called acute porphyria<br/>
+            5. had a blood test that showed you have abnormal levels of potassium, calcium or magnesium<br/>
+            <br/>
+            You should get advice from doctor or pharmacist before you really buy it.
+        </template>
+    </category>
+    
+    <category>
+        <pattern>SPORANOX</pattern>
+        <template>
+            Details:<br/>
+            <link>
+                <text>Details for Itraconazole (Sporanox)</text>
+                <url>https://www.drugs.com/sporanox.html#:~:text=You%20should%20not%20take%20Sporanox,months%20after%20your%20last%20dose.</url>
+            </link>
+            <br/>
+            People who cannot take Itraconazole (Sporanox) without professional advice:<br/>
+            1. allergic to itraconazole or similar medicines such as fluconazole or ketoconazole<br/>
+            2. had heart failure history<br/>
+            3. have liver or kidney disease<br/>
+            4. pregnant<br/>
+            5. having sign of congestive heart failure<br/>
+            <br/>
+            You should get advice from doctor or pharmacist before you really buy it.
+        </template>
+    </category>
+    
+    <category>
+        <pattern>LASIMI</pattern>
+        <template>
+            Details:<br/>
+            <link>
+                <text>Details for Terbinafine (Lasimi)</text>
+                <url>https://www.nhs.uk/medicines/terbinafine/</url>
+            </link>
+            <br/>
+            only suitable for adults (18 years or older)<br/>
+            <br/>
+            People who cannot take Terbinafine (Lasimi) without professional advice:<br/>
+            1. had an allergic reaction to terbinafine or any other medicines in the past<br/>
+            2. had liver or kidney problems<br/>
+            3. are pregnant, trying to get pregnant or are breastfeeding<br/>
+            <br/>
+            You should get advice from doctor or pharmacist before you really buy it.
+        </template>
+    </category>
+    
+    <category>
+        <pattern>PEG</pattern>
+        <template>
+            Details:<br/>
+            <link>
+                <text>Details for griseofulvin (Gris-PEG)</text>
+                <url>https://www.everydayhealth.com/drugs/griseofulvin</url>
+            </link>
+            <br/>
+            People who cannot take griseofulvin (Gris-PEG) without professional advice:<br/>
+            1. allergic to griseofulvin or penicilin<br/>
+            2. liver failure<br/>
+            3. porphyria (a genetic enzyme disorder that causes symptoms affecting the skin or nervous system)<br/>
+            4. if you are pregnant or may become pregnant.<br/>
+            5. had liver disease, lupus<br/>
+            <br/>
+            You should get advice from doctor or pharmacist before you really buy it.
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+            
+    <!--ram's horn nails cutting tutorial-->
+    <category>
+        <pattern>RHNTUTORIAL</pattern>
+        <template>
+            <link>
+                <text>Ram's horn nails cutting tutorial</text>
+                <url>https://www.youtube.com/watch?v=YzsN-Imfb4s</url>
+            </link>
+        </template>
+    </category>
+    
+    <!--_____________________________________________________________________________________-->
+            
+    <!--specialist location-->
+    <category>
+        <pattern>* where *</pattern>
+        <template><srai>ASKLOCATION</srai></template>
+    </category>
+    
+    <category>
+        <pattern>* where</pattern>
+        <template><srai>ASKLOCATION</srai></template>
+    </category>
+    
+    <category>
+        <pattern>where *</pattern>
+        <template><srai>ASKLOCATION</srai></template>
+    </category>
+    
+    <category>
+        <pattern>where</pattern>
+        <template><srai>ASKLOCATION</srai></template>
+    </category>
+    
+    <category>
+        <pattern>ASKLOCATION</pattern>
+        <template>Which state are you at?</template>
+    </category>
+    
+    <category>
+        <pattern>johor</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Johor Bharu<br/>
+            101-103, Jalan Kuning, Taman Pelangi, 80400 Johor Bahru, Johor<br/>
+            T: +607 338 1878<br/>
+            T: +6012-7096311<br/>
+            <br/>
+            2.<br/>
+            Klinik Dr Ko Batu Pahat<br/>
+            No. 13 (Ground Floor), Jalan Desa Botani 1, Taman Desa Botani, 83000 Batu Pahat, Johor.<br/>
+            T: +607-4395163<br/>
+            T: +6016-2871681<br/>
+            <br/>
+            3.<br/>
+            Klinik Dr Ko Muar<br/>
+            No. 31 Ground Floor, Lorong Dato Ahmad, Jalan Khalidi, 84000 Muar, Johor.<br/>
+            T: +606-9101181<br/>
+            T: +6013-995 8383<br/>
+            <br/>
+            4.<br/>
+            Klinik Dr Ko Kulai Jaya<br/>
+            201 Jalan Kenanga 29/4, Indahpura 81000 Kulai Jaya, Johor Malaysia<br/>
+            T: +607 660 8778<br/>
+            T: +6013-2818660<br/>
+            <br/>
+            5.<br/>
+            The Mall, Mid Valley Southkey,<br/>
+            F-025, 1, Persiaran Southkey 1,<br/>
+            Southkey, 80150 Johor Bharu, Johor, Malaysia.<br/>
+            T:07-336 5856<br/>
+            T:010-891 2233<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>selangor</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Kajang<br/>
+            No 1-2, Kompleks Sentral Point, Jalan TKS 1, Taman Kajang Sentral, 43000 Selangor.<br/>
+            T: +603 8741 3928<br/>
+            T: +6013-9002229<br/>
+            <br/>
+            2.<br/>
+            Klinik Dr Ko Kuala Selangor<br/>
+            43 Jalan Peninsula Utama 1, Peninsula Park, 45000 Kuala Selangor.<br/>
+            T: +603 328 12600<br/>
+            T: +6010-3087338<br/>
+            <br/>
+            3.<br/>
+            Klinik Dr Ko Kota Damansara<br/>
+            NRD-01-09, Sunway Nexis Retail,Jalan PJU 5/1, Kota Damansara,47810 Petaling Jaya, Selangor Darul
+            Ehsan.<br/>
+            T: +603 6151 5255<br/>
+            T: +6019-2799808<br/>
+            <br/>
+            4.<br/>
+            Klinik Dr Ko Ara Damansara<br/>
+            Block A-1-3, Block A, Pacific Place Commercial Centre, Jalan PJU 1A/4, Ara Damansara, Petaling Jaya, 47301, Selangor<br/>
+            T: +603 7859 0803<br/>
+            T: +603 7859 0806<br/>
+            T: +6012-2426589<br/>
+            <br/>
+            5.<br/>
+            Klinik Dr Ko Kota Kemuning<br/>
+            21-G (Ground Floor), Persiaran Anggerik, Vanilla Business Park 1, Kota Kemuning, Section 31, 40460 Shah Alam.<br/>
+            T: +603 5525 5175<br/>
+            T: +6012-2288063<br/>
+            <br/>
+            6.<br/>
+            Klinik Dr Ko USJ<br/>
+            15G,Jalan USJ 10/1A, UEP Subang Jaya, Selangor Darul Ehsan<br/>
+            T: +6012-3928861<br/>
+            <br/>
+            7.<br/>
+            Sunway Pyramid Shopping Mall,<br/>
+            G1.86, Ground floor,<br/>
+            47500 Petaling Jaya, Selangor, Malaysia.<br/>
+            T: 03-5612 8385<br/>
+            T: 019-995 0033<br/>
+            <br/>
+            8.<br/>
+            Klinik Dr Ko Taman Melawati<br/>
+            7-1, Ukay Boulevard, Jalan Ulu kelang Batu 8, 68000, Ampang Selangor.<br/>
+            T: +603-41619311<br/>
+            T: +6013-9963355<br/>
+            <br/>
+            9.<br/>
+            Klinik Dr Ko Puchong<br/>
+            52A, 2nd Floor, Pusat Perdagangan 1 Puchong, Jalan OP 1/5, Off Jalan Puchong, 47160 Puchong, Selangor Darul Ehsan<br/>
+            T: +603 8076 4713<br/>
+            T: +603 8070 2979<br/>
+            T: +6013-9950888<br/>
+            <br/>
+            10.<br/>
+            Klinik Dr Ko Sg Buloh<br/>
+            Pusat Komersial TSB, No 67-1, Jalan Nautika A U20/A, Seksyen U20, 40160 Sungai Buloh, Selangor Darul Ehsan<br/>
+            T: +603 6145 0671<br/>
+            T: +6018-3222869<br/>
+            <br/>
+            11.<br/>
+            5B/G/1, Jalan Setia Nusantara U13/17, Seksyen U13, Setia Eco Park, 40170 Shah Alam<br/>
+            Selangor Darul Ehsan<br/>
+            T: 03-3358 8991<br/>
+            T: +6013-6773335<br/>
+            <br/>
+            12.<br/>
+            Klinik Dr Ko Rawang<br/>
+            No 23, Jalan Bandar Rawang 16, Bandar Baru Rawang, 48000 Rawang, Selangor Darul Ehsan<br/>
+            T: +603 6091 4887<br/>
+            T: +6019-2119282<br/>
+            <br/>
+            13.<br/>
+            Klinik Dr Ko Cheras<br/>
+            15A, 17A, Jalan Perniagaan Masria 1, Pusat Perniagaan Masria, 43200 Cheras, Selangor<br/>
+            T: +603 9074 1197<br/>
+            T: +603 9074 1579<br/>
+            T: +6012-2331215<br/>
+            <br/>
+            14.<br/>
+            Klinik Dr Ko Damansara<br/>
+            A-1-13A, Block Allamanda, 10 Boulevard Lebuhraya Sprint, PJU 6A, Petaling Jaya, 47400 Selangor<br/>
+            T: +603 7722 1643<br/>
+            T: +6013-9892225<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>seremban</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Seremban<br/>
+            345, Jalan S2 B8, Uptown Avenue Seremban 2, 70300 Seremban<br/>
+            T: +606 601 5982<br/>
+            T: +6010-3085812<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>melaka</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Melaka<br/>
+            23 - 25, Jalan Melaka Raya 24, Taman Melaka Jaya, 75000 Melaka<br/>
+            T: +606 2818 100<br/>
+            T: +6013-9952211<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>kedah</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Alor Setar<br/>
+            172, Ground Floor,<br/>
+            Kompleks Perniagaan Sultan Abdul Hamid,<br/>
+            Persiaran Sultan Abdul Hamid, 05050 Alor Setar, Kedah<br/>
+            T: +604-7733603<br/>
+            T: +6013-9695599<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>penang</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.
+            Klinik Dr Ko Auto World Penang<br/>
+            PT 1797-1-4A (Plot15A) First Floor, Kompleks Auto World, Jalan Perusahaan, Juru, Interchange,<br/>
+            13600 Perai, Pulau Pinang<br/>
+            T: +604 5025 240<br/>
+            T: +6013-6704288<br/>
+            <br/>
+            2.<br/>
+            Klinik Dr Ko Kelawai Penang<br/>
+            87-C, Jalan Kelawai, Pulau, Tikus, 10250 Georgetown, Pulau Pinang<br/>
+            T: +604 226 2740<br/>
+            T: +6010-3085813<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>perak</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Ipoh<br/>
+            29, Jalan Pusat Perniagaan Pertama, Pusat Perniagaan Pertama, Jalan Silibin, 30100 Ipoh, Perak<br/>
+            T: +605 526 2680<br/>
+            T: +60122605770<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>kl</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Pudu<br/>
+            32-4, Jalan Metro Pudu, Fraser Business Park, Off Jalan Yew, 55100 Kuala Lumpur<br/>
+            T: +603 9221 0261<br/>
+            T: +6013-6706063<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>kuala lumpur</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Pudu<br/>
+            32-4, Jalan Metro Pudu, Fraser Business Park, Off Jalan Yew, 55100 Kuala Lumpur<br/>
+            T: +603 9221 0261<br/>
+            T: +6013-6706063<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>pahang</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Kuantan<br/>
+            A-31 Ground - Mezz Floor, Lot 216 Sek 37, Jalan Beserah, 25000 Kuantan Pahang.<br/>
+            T: +609 513 0184<br/>
+            T: +6019-9936655<br/>
+        </template>
+    </category>
+    
+    
+    <category>
+        <pattern>kelantan</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Kota Bharu<br/>
+            PT 769, No 5658-A, Jalan Sri Cemerlang, 15400 Kota Bharu, Kelantan<br/>
+            T: +609- 7405911<br/>
+            T: +6010-3085766<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>sabah</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Kota Kinabalu<br/>
+            Lot 2 First Floor, Block F, Lorong Pusat Komersil 88/1, Marketplace 88, 88300 Sabah, Malaysia.<br/>
+            T: +608 821 1009<br/>
+            T: +6013-974 3111<br/>
+            <br/>
+            2.<br/>
+            Klinik Dr Ko Sandakan<br/>
+            No. 6 - 7, Block 1, Bandar Indah, Batu 4, Jalan Utara, 90000 Sandakan, Sabah<br/>
+            T: +608 922 3020<br/>
+            T: +6013-6705503<br/>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>sarawak</pattern>
+        <that>Which state are you at</that>
+        <template>
+            1.<br/>
+            Klinik Dr Ko Kuching<br/>
+            Lot 16821 1st Floor,Tabuan Tranquility Phase 1,Jalan Canna, 93350 Kuching, Sarawak<br/>
+            T: +6082 36 2026<br/>
+            T: +6013-6706822<br/>
+            <br/>
+            2.<br/>
+            Klinik Dr Ko Miri<br/>
+            Lot 2217, 1st Floor, Saberkas, Commercial Centre, 98000 Miri, Sarawak<br/>
+            T: +608 565 0603<br/>
+            T: +6012-6188971<br/>
+        </template>
+    </category>
+    
+    
+    <category>
+        <pattern>*</pattern>
+        <that>Which state are you at</that>
+        <template>Sorry, there is no recommended specialist in this state.</template>
+    </category>
+    
+    
+</aiml>
